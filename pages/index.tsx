@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -12,36 +12,30 @@ const Home: NextPage = () => {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
+      <Header/>
+
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to my portfolio!
+            Welcome to my portfolio!
         </h1>
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+        <div id={'home'}>
+            <h1>Home</h1>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <div id={'about-me'}>
+            <h1>About Me</h1>
+        </div>
+
+        <div id={'skills-and-experience'}>
+            <h1>Skills & Experience</h1>
+        </div>
+
+        <div id={'pet-projects'}>
+            <h1>Pet Projects</h1>
+        </div>
+
+      </main>
     </div>
   )
 }

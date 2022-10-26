@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #A9A9A9;
 }
 
 a {
@@ -14,3 +15,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/*
+carrot orange: #F18F01
+Blue Munsell: #048BA8
+Charcoal: #2E4057
+Android Green: #99C24D
+Jet: #2F2D2E
+
+--
+sky: #CAEBF2
+carbon: #A9A9A9
+watermelon: #FF3B3F
+neutral: #EFEFEF
+
+
+*/
