@@ -2,8 +2,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
+import {useAccount} from "wagmi";
 
 const Home: NextPage = () => {
+
+    const { address, isConnected } = useAccount()
+
   return (
     <div className={styles.container}>
       <Head>
