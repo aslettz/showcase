@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 import {useAccount} from "wagmi";
+import AboutMe from "../components/aboutMe";
 
 const Home: NextPage = () => {
 
@@ -28,9 +29,7 @@ const Home: NextPage = () => {
             <h1>Home</h1>
         </div>
 
-        <div id={'about-me'}>
-            <h1>About Me</h1>
-        </div>
+        <AboutMe/>
 
         <div id={'skills-and-experience'}>
             <h1>Skills & Experience</h1>
