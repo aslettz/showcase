@@ -9,6 +9,7 @@ const Home: NextPage = () => {
     const { address, isConnected } = useAccount()
 
   return (
+
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
