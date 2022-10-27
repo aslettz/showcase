@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 import {useAccount} from "wagmi";
+import {motion} from "framer-motion";
 import AboutMe from "../components/aboutMe";
 
 const Home: NextPage = () => {
@@ -21,9 +22,13 @@ const Home: NextPage = () => {
       <Header/>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        <motion.h1 className={styles.title}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+        >
             Welcome to my portfolio!
-        </h1>
+        </motion.h1>
 
         <div id={'home'}>
             <h1>Home</h1>

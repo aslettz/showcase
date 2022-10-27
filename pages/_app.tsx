@@ -11,11 +11,11 @@ const client = createClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return(
-      <AnimatePresence>
+      // <AnimatePresence>
           <WagmiConfig client={client}>
             <Component {...pageProps} />
           </WagmiConfig>
-      </AnimatePresence>
+      // </AnimatePresence>
   )
 }
 
