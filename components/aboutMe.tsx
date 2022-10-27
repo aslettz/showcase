@@ -1,9 +1,10 @@
+import {motion} from "framer-motion";
 
 const AboutMe = () => {
 
     return (
-        <div id={'about-me'}>
-            <h1>About Me</h1>
+        <motion.div >
+            <h1 id={'about-me'}>About Me</h1>
             <p>
                 This is where I will put a lot of information about me. It will
                 make me look cool and also very personable probably. People
@@ -11,7 +12,7 @@ const AboutMe = () => {
                 this. It's a good thing I can build a website!
                 (Don't forget a picture of myself!)
             </p>
-        </div>
+        </motion.div>
     );
 
 }
