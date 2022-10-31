@@ -27,22 +27,12 @@ const Home: NextPage = () => {
             Welcome to my portfolio!
         </motion.h1>
 
-        <div id={'home'}>
-            <h1>Home</h1>
-        </div>
-
         <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
         <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
-
-        <div id={'skills-and-experience'}>
-            <h1>Skills & Experience</h1>
-        </div>
-
-        <div id={'pet-projects'}>
-            <h1>Pet Projects</h1>
-        </div>
+        <InfoSection infoSectionType={InfoSectionTypes.Skills} anchorId={'skills'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.Experience} anchorId={'experience'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.Education} anchorId={'education'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'pet-projects'}/>
 
       </main>
     </div>

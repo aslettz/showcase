@@ -12,7 +12,7 @@ export enum InfoSectionTypes {
     Skills,
     Experience,
     Education,
-    PetProjects,
+    SideProjects,
 }
 
 export interface Asset {
