@@ -10,7 +10,7 @@ const HorizontalNav = styled.div`
     align-items: center;
 `
 
-const NavItem = styled.h2`
+const NavItem = styled.h3`
     padding: .5rem;
 `
 
@@ -52,27 +52,37 @@ const Header = () => {
             <HorizontalNav>
                 <NavItem>
                     <Link href="#home">
-                        <ClickableLink>Home</ClickableLink>
+                        <ClickableLink>1. Home</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#about-me">
-                        <ClickableLink>About Me</ClickableLink>
+                        <ClickableLink>2. About Me</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#skills-and-experience">
-                        <ClickableLink>Skills & Experience</ClickableLink>
+                    <Link href="#skills">
+                        <ClickableLink>3. Skills</ClickableLink>
+                    </Link>
+                </NavItem>
+                <NavItem>
+                    <Link href="#experience">
+                        <ClickableLink>4. Experience</ClickableLink>
+                    </Link>
+                </NavItem>
+                <NavItem>
+                    <Link href="#education">
+                        <ClickableLink>5. Education</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#pet-projects">
-                        <ClickableLink>Pet Projects</ClickableLink>
+                        <ClickableLink>6. Pet Projects</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#resume">
-                        <ClickableLink>Resume</ClickableLink>
+                        <ClickableLink>7. Resume</ClickableLink>
                     </Link>
                 </NavItem>
             </HorizontalNav>
