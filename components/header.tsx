@@ -25,12 +25,26 @@ const ClickableLink = styled.a`
     }
 `
 
-const Header = () => {
+export interface HeaderProps {
+    sectionContainerId: string;
+}
+
+const Header = (props: HeaderProps) => {
     const { address, isConnected } = useAccount()
     const { connect } = useConnect({
         connector: new InjectedConnector(),
     })
     const { disconnect } = useDisconnect()
+
+    function smoothScrollToElement(id: string) {
+        const sectionContainer = document.querySelector(props.sectionContainerId);
+
+        sectionContainer!.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+            inline: "nearest"
+        });
+    }
 
     function renderWalletInteface() {
         if (isConnected)
@@ -52,12 +66,12 @@ const Header = () => {
             <HorizontalNav>
                 <NavItem>
                     <Link href="#home">
-                        <ClickableLink>1. Home</ClickableLink>
+                        <ClickableLink onClick={() => smoothScrollToElement('home')}>1. Home</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#about-me">
-                        <ClickableLink>2. About Me</ClickableLink>
+                        <ClickableLink onClick={() => smoothScrollToElement('about-me')}>2. About Me</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
@@ -76,8 +90,8 @@ const Header = () => {
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#pet-projects">
-                        <ClickableLink>6. Pet Projects</ClickableLink>
+                    <Link href="#side-projects">
+                        <ClickableLink onClick={() => smoothScrollToElement('side-projects')}>6. Side Projects</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>

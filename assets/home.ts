@@ -1,7 +1,7 @@
 import {Asset} from "../components/infoSection";
 
-const HOME_TEXT = 'Welcome to my portfolio!';
-const HOME_HEADER = 'Home';
+const HOME_TEXT = '';
+const HOME_HEADER = 'Welcome to my portfolio!';
 
 const HOME: Asset = {
     header: HOME_HEADER,

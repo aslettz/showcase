@@ -21,7 +21,7 @@ export interface Asset {
     imgPath: string;
 }
 
-const AboutMe = (props: InfoSectionProps) => {
+const InfoSection = (props: InfoSectionProps) => {
     const asset = useGetAsset(props.infoSectionType);
 
     return (
@@ -40,4 +40,4 @@ const AboutMe = (props: InfoSectionProps) => {
 
 }
 
-export default AboutMe
+export default InfoSection

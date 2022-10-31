@@ -16,23 +16,17 @@ const Home: NextPage = () => {
         <link rel="icon" href="../public/favicon.ico" />
       </Head>
 
-      <Header/>
+      <Header sectionContainerId={'main'}/>
 
-      <main className={styles.main}>
-        <motion.h1 className={styles.title}
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-        >
-            Welcome to my portfolio!
-        </motion.h1>
+      {/*  Make this a div of type section header or something with a max height so IT can scroll when we click on stuff */}
+      <main id={'main'} className={styles.main}>
 
         <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
         <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
         <InfoSection infoSectionType={InfoSectionTypes.Skills} anchorId={'skills'}/>
         <InfoSection infoSectionType={InfoSectionTypes.Experience} anchorId={'experience'}/>
         <InfoSection infoSectionType={InfoSectionTypes.Education} anchorId={'education'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'pet-projects'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'side-projects'}/>
 
       </main>
     </div>
