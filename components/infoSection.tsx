@@ -7,7 +7,12 @@ export interface InfoSectionProps {
 }
 
 export enum InfoSectionTypes {
+    Home,
     AboutMe,
+    Skills,
+    Experience,
+    Education,
+    PetProjects,
 }
 
 export interface Asset {

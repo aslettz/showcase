@@ -31,6 +31,9 @@ const Home: NextPage = () => {
             <h1>Home</h1>
         </div>
 
+        <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
+        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
         <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
 
         <div id={'skills-and-experience'}>
