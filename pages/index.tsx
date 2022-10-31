@@ -1,14 +1,11 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import Head from 'next/head'
 import Header from '../components/header'
 import styles from '../styles/Home.module.css'
-import {useAccount} from "wagmi";
 import {motion} from "framer-motion";
-import AboutMe from "../components/aboutMe";
+import InfoSection, {InfoSectionTypes} from "../components/infoSection";
 
 const Home: NextPage = () => {
-
-    const { address, isConnected } = useAccount()
 
   return (
 
@@ -34,7 +31,7 @@ const Home: NextPage = () => {
             <h1>Home</h1>
         </div>
 
-        <AboutMe/>
+        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
 
         <div id={'skills-and-experience'}>
             <h1>Skills & Experience</h1>
