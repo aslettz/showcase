@@ -36,14 +36,13 @@ const Header = (props: HeaderProps) => {
     })
     const { disconnect } = useDisconnect()
 
-    function smoothScrollToElement(id: string) {
-        const sectionContainer = document.querySelector(props.sectionContainerId);
+    function smoothScrollToElement(event: any) {
+        event.preventDefault();
+        let id = event.target.id;
 
-        sectionContainer!.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-            inline: "nearest"
-        });
+        let position = document.getElementById(id); //removing extra last - (dash)
+        window.location.href = "#" + id; // changing the url
+        position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
     }
 
     function renderWalletInteface() {
@@ -66,32 +65,32 @@ const Header = (props: HeaderProps) => {
             <HorizontalNav>
                 <NavItem>
                     <Link href="#home">
-                        <ClickableLink onClick={() => smoothScrollToElement('home')}>1. Home</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>1. Home</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#about-me">
-                        <ClickableLink onClick={() => smoothScrollToElement('about-me')}>2. About Me</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>2. About Me</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#skills">
-                        <ClickableLink>3. Skills</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>3. Skills</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#experience">
-                        <ClickableLink>4. Experience</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>4. Experience</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#education">
-                        <ClickableLink>5. Education</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>5. Education</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
                     <Link href="#side-projects">
-                        <ClickableLink onClick={() => smoothScrollToElement('side-projects')}>6. Side Projects</ClickableLink>
+                        <ClickableLink onClick={smoothScrollToElement}>6. Side Projects</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>

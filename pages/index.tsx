@@ -4,6 +4,18 @@ import Header from '../components/header'
 import styles from '../styles/Home.module.css'
 import {motion} from "framer-motion";
 import InfoSection, {InfoSectionTypes} from "../components/infoSection";
+import styled from "styled-components";
+
+const Main = styled.div`
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 const Home: NextPage = () => {
 
@@ -18,8 +30,7 @@ const Home: NextPage = () => {
 
       <Header sectionContainerId={'main'}/>
 
-      {/*  Make this a div of type section header or something with a max height so IT can scroll when we click on stuff */}
-      <main id={'main'} className={styles.main}>
+      <Main id={'main'} className={styles.main}>
 
         <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
         <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
@@ -28,7 +39,7 @@ const Home: NextPage = () => {
         <InfoSection infoSectionType={InfoSectionTypes.Education} anchorId={'education'}/>
         <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'side-projects'}/>
 
-      </main>
+      </Main>
     </div>
   )
 }
