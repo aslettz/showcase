@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import styled from "styled-components";
 import {useAccount, useConnect, useDisconnect} from "wagmi";
 import {InjectedConnector} from "@wagmi/core";
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll/modules';
 
 const HorizontalNav = styled.div`
     display: flex;
@@ -14,7 +14,7 @@ const NavItem = styled.h3`
     padding: .5rem;
 `
 
-const ClickableLink = styled.a`
+const ClickableLink = styled.div`
     cursor: pointer;
     padding: 8px;
     border-radius: 4px;
@@ -36,15 +36,6 @@ const Header = (props: HeaderProps) => {
     })
     const { disconnect } = useDisconnect()
 
-    function smoothScrollToElement(event: any) {
-        event.preventDefault();
-        let id = event.target.id;
-
-        let position = document.getElementById(id); //removing extra last - (dash)
-        window.location.href = "#" + id; // changing the url
-        position && position.scrollIntoView({ behavior: "smooth", block: "start" }) //scrolling the page
-    }
-
     function renderWalletInteface() {
         if (isConnected)
             return (
@@ -64,37 +55,37 @@ const Header = (props: HeaderProps) => {
 
             <HorizontalNav>
                 <NavItem>
-                    <Link href="#home">
-                        <ClickableLink onClick={smoothScrollToElement}>1. Home</ClickableLink>
+                    <Link to={'home'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>1. Home</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#about-me">
-                        <ClickableLink onClick={smoothScrollToElement}>2. About Me</ClickableLink>
+                    <Link to={'about-me'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>2. About Me</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#skills">
-                        <ClickableLink onClick={smoothScrollToElement}>3. Skills</ClickableLink>
+                    <Link to={'skills'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>3. Skills</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#experience">
-                        <ClickableLink onClick={smoothScrollToElement}>4. Experience</ClickableLink>
+                    <Link to={'experience'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>4. Experience</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#education">
-                        <ClickableLink onClick={smoothScrollToElement}>5. Education</ClickableLink>
+                    <Link to={'education'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>5. Education</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#side-projects">
-                        <ClickableLink onClick={smoothScrollToElement}>6. Side Projects</ClickableLink>
+                    <Link to={'side-projects'} spy={true} smooth={true} duration={500}>
+                        <ClickableLink>6. Side Projects</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link href="#resume">
+                    <Link to={'home'} spy={true} smooth={true} duration={500}>
                         <ClickableLink>7. Resume</ClickableLink>
                     </Link>
                 </NavItem>

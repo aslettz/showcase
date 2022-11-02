@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import {motion} from "framer-motion";
 import InfoSection, {InfoSectionTypes} from "../components/infoSection";
 import styled from "styled-components";
+import {Element} from "react-scroll/modules";
 
 const Main = styled.div`
   min-height: 100vh;
@@ -15,6 +16,10 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const BigElement = styled(Element)`
+  min-height: 80vh;
 `
 
 const Home: NextPage = () => {
@@ -32,12 +37,24 @@ const Home: NextPage = () => {
 
       <Main id={'main'} className={styles.main}>
 
-        <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.Skills} anchorId={'skills'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.Experience} anchorId={'experience'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.Education} anchorId={'education'}/>
-        <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'side-projects'}/>
+          <BigElement name={'Home'} className={'BigElement'}>
+              <InfoSection infoSectionType={InfoSectionTypes.Home} anchorId={'home'}/>
+          </BigElement>
+        <BigElement name={'about-me'}>
+            <InfoSection infoSectionType={InfoSectionTypes.AboutMe} anchorId={'about-me'}/>
+        </BigElement>
+          <BigElement name={'skills'}>
+              <InfoSection infoSectionType={InfoSectionTypes.Skills} anchorId={'skills'}/>
+          </BigElement>
+          <BigElement name={'experience'}>
+              <InfoSection infoSectionType={InfoSectionTypes.Experience} anchorId={'experience'}/>
+          </BigElement>
+          <BigElement name={'education'}>
+              <InfoSection infoSectionType={InfoSectionTypes.Education} anchorId={'education'}/>
+          </BigElement>
+          <BigElement name={'side-projects'}>
+              <InfoSection infoSectionType={InfoSectionTypes.SideProjects} anchorId={'side-projects'}/>
+          </BigElement>
 
       </Main>
     </div>
