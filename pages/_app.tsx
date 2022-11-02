@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { WagmiConfig, createClient } from 'wagmi'
 import { getDefaultProvider } from 'ethers'
-import {AnimatePresence} from "framer-motion";
+import Header from "../components/header";
 
 const client = createClient({
   autoConnect: false,
@@ -13,7 +13,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return(
       // <AnimatePresence>
           <WagmiConfig client={client}>
-            <Component {...pageProps} />
+              <Header/>
+              <Component {...pageProps} />
           </WagmiConfig>
       // </AnimatePresence>
   )

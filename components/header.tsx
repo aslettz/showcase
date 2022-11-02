@@ -7,12 +7,23 @@ const HorizontalNav = styled.div`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    align-items: center;
-`
+    align-items: center;    
+`;
+
+const FixedNav = styled.div`
+    top: 0px;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center; 
+    width: 100%;
+    background-color: red;
+`;
 
 const NavItem = styled.h3`
     padding: .5rem;
-`
+`;
 
 const ClickableLink = styled.div`
     cursor: pointer;
@@ -26,7 +37,6 @@ const ClickableLink = styled.div`
 `
 
 export interface HeaderProps {
-    sectionContainerId: string;
 }
 
 const Header = (props: HeaderProps) => {
@@ -48,49 +58,49 @@ const Header = (props: HeaderProps) => {
     }
 
     return (
-        <HorizontalNav>
+        <FixedNav>
             <div>
                 {renderWalletInteface()}
             </div>
 
             <HorizontalNav>
                 <NavItem>
-                    <Link to={'home'} spy={true} smooth={true} duration={500}>
+                    <Link to={'home'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>1. Home</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'about-me'} spy={true} smooth={true} duration={500}>
+                    <Link to={'about-me'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>2. About Me</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'skills'} spy={true} smooth={true} duration={500}>
+                    <Link to={'skills'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>3. Skills</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'experience'} spy={true} smooth={true} duration={500}>
+                    <Link to={'experience'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>4. Experience</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'education'} spy={true} smooth={true} duration={500}>
+                    <Link to={'education'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>5. Education</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'side-projects'} spy={true} smooth={true} duration={500}>
+                    <Link to={'side-projects'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>6. Side Projects</ClickableLink>
                     </Link>
                 </NavItem>
                 <NavItem>
-                    <Link to={'home'} spy={true} smooth={true} duration={500}>
+                    <Link to={'home'} spy={true} smooth={true} duration={500} offset={-100}>
                         <ClickableLink>7. Resume</ClickableLink>
                     </Link>
                 </NavItem>
             </HorizontalNav>
-        </HorizontalNav>
+        </FixedNav>
     );
 
 }
