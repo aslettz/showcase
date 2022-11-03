@@ -1,9 +1,26 @@
 import type {NextPage} from 'next'
 import styled from "styled-components";
 import ExperienceChart from "../components/experienceChart";
+import App from "next/app";
+
+
+const AppContainer = styled.div`
+    padding: 24px;
+`
+
+const ContentContainer = styled.div`
+
+`
+
+const MainContent = styled.div`
+
+`
+
+const SideContent = styled.div`
+
+`
 
 const Home: NextPage = () => {
-
 
     function renderHeroBanner() {
         return <div>Hero Banner</div>
@@ -57,6 +74,7 @@ const Home: NextPage = () => {
         return (
         <SkillsDisplay>
             <h2>Proficiencies</h2>
+
             <ProficiencySection>
                 <ProficiencyTitle>Advanced</ProficiencyTitle>
                 <ProficiencyItemGroup>
@@ -65,6 +83,7 @@ const Home: NextPage = () => {
                     <ProficiencyItem>Solidity</ProficiencyItem>
                 </ProficiencyItemGroup>
             </ProficiencySection>
+
             <ProficiencySection>
                 <ProficiencyTitle>Experienced</ProficiencyTitle>
                 <ProficiencyItemGroup>
@@ -73,6 +92,7 @@ const Home: NextPage = () => {
                     <ProficiencyItem>ERC Token Standards</ProficiencyItem>
                 </ProficiencyItemGroup>
             </ProficiencySection>
+
             <ProficiencySection>
                 <ProficiencyTitle>Familiar</ProficiencyTitle>
                 <ProficiencyItemGroup>
@@ -80,20 +100,23 @@ const Home: NextPage = () => {
                     <ProficiencyItem>web3.js</ProficiencyItem>
                 </ProficiencyItemGroup>
             </ProficiencySection>
+
         </SkillsDisplay>)
     }
 
     return (
-        <>
-            <div>
-                {renderHeroBanner()}
-                {renderAboutMe()}
-                {renderExperience()}
-            </div>
-            <div>
-                {renderSkillsDisplay()}
-            </div>
-        </>
+        <AppContainer>
+            {renderHeroBanner()}
+            <ContentContainer>
+                <MainContent>
+                    {renderAboutMe()}
+                    {renderExperience()}
+                </MainContent>
+                <SideContent>
+                    {renderSkillsDisplay()}
+                </SideContent>
+            </ContentContainer>
+        </AppContainer>
     )
 }
 

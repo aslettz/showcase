@@ -13,15 +13,19 @@ const ChartContainer = styled.div`
 `
 
 const SourceSelection = styled.ul`
-    
+    list-style-type: none;
+    padding: 8px;
+    border-right: 1px solid black;
 `
 
-const SourceItem = styled.li`
-
+const SourceItem = styled.li<{ isSelected: boolean }>`
+    padding: 4px;
+    background-color: ${(props) => {return (props.isSelected ? '#0000FF' : '#FFFFFF')}};
+    cursor: pointer;
 `
 
 const ExperienceContainer = styled.div`
-
+    padding: 8px;
 `
 
 const ExperienceHeader = styled.h2`
@@ -105,16 +109,16 @@ const ExperienceChart = () => {
     function renderSourceSelection() {
         return (
         <SourceSelection>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Awardco)}>
+            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Awardco)} isSelected={jobSelectedIndex==ExperienceSources.Awardco}>
                 Awardco
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Contract)}>
+            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Contract)} isSelected={jobSelectedIndex==ExperienceSources.Contract}>
                 Contract
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.RedSky)}>
+            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.RedSky)} isSelected={jobSelectedIndex==ExperienceSources.RedSky}>
                 RedSky Tech.
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.BYU)}>
+            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.BYU)} isSelected={jobSelectedIndex==ExperienceSources.BYU}>
                 BYU
             </SourceItem>
         </SourceSelection>);
