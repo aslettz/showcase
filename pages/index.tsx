@@ -9,15 +9,15 @@ const AppContainer = styled.div`
 `
 
 const ContentContainer = styled.div`
-
+    display: flex;
 `
 
 const MainContent = styled.div`
-
+    max-width: 66%;
 `
 
 const SideContent = styled.div`
-
+    padding: 12px;
 `
 
 const Home: NextPage = () => {

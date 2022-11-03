@@ -16,6 +16,7 @@ const SourceSelection = styled.ul`
     list-style-type: none;
     padding: 8px;
     border-right: 1px solid black;
+    min-width: fit-content;
 `
 
 const SourceItem = styled.li<{ isSelected: boolean }>`
