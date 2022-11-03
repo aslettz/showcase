@@ -9,11 +9,11 @@ const Home: NextPage = () => {
         return <div>Hero Banner</div>
     }
 
-    const AboutMeBlock = styled.div`
-        display: flex;
-    `
-
     function renderAboutMe() {
+        const AboutMeBlock = styled.div`
+            display: flex;
+        `
+
         return (
         <AboutMeBlock>
             <div>
@@ -29,7 +29,58 @@ const Home: NextPage = () => {
     }
 
     function renderSkillsDisplay() {
-        return <div>Skills</div>
+        const SkillsDisplay = styled.div`
+            
+        `;
+
+        const ProficiencySection = styled.div`
+            display: flex;
+            flex-direction: column;
+        `;
+
+        const ProficiencyTitle = styled.h3`
+            margin: 2px 0;
+        `;
+
+        const ProficiencyItemGroup = styled.div`
+            display: flex;
+        `;
+
+        const ProficiencyItem = styled.h4`
+            border: 1px solid black;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 0 4px;
+        `;
+
+
+        return (
+        <SkillsDisplay>
+            <h2>Proficiencies</h2>
+            <ProficiencySection>
+                <ProficiencyTitle>Advanced</ProficiencyTitle>
+                <ProficiencyItemGroup>
+                    <ProficiencyItem>git</ProficiencyItem>
+                    <ProficiencyItem>Typescript/Javascript</ProficiencyItem>
+                    <ProficiencyItem>Solidity</ProficiencyItem>
+                </ProficiencyItemGroup>
+            </ProficiencySection>
+            <ProficiencySection>
+                <ProficiencyTitle>Experienced</ProficiencyTitle>
+                <ProficiencyItemGroup>
+                    <ProficiencyItem>Foundry (Forge/Anvil)</ProficiencyItem>
+                    <ProficiencyItem>Remix</ProficiencyItem>
+                    <ProficiencyItem>ERC Token Standards</ProficiencyItem>
+                </ProficiencyItemGroup>
+            </ProficiencySection>
+            <ProficiencySection>
+                <ProficiencyTitle>Familiar</ProficiencyTitle>
+                <ProficiencyItemGroup>
+                    <ProficiencyItem>ethers.js</ProficiencyItem>
+                    <ProficiencyItem>web3.js</ProficiencyItem>
+                </ProficiencyItemGroup>
+            </ProficiencySection>
+        </SkillsDisplay>)
     }
 
     return (
