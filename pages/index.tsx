@@ -10,6 +10,9 @@ const AppContainer = styled.div`
 
 const ContentContainer = styled.div`
     display: flex;
+    padding: 0 8vw;
+    flex-wrap: wrap;    
+    justify-content: center;
 `
 
 const MainContent = styled.div`
@@ -20,24 +23,93 @@ const SideContent = styled.div`
     padding: 12px;
 `
 
+const StyledHr = styled.hr`            
+            height: 1px;
+            margin: 50px 0;
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), color-stop(0.5, #333333), to(rgba(0, 0, 0, 0)));
+            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+            background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+            background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+            background: linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+            border: 0;
+            width: 84%
+            padding: 0 8rem;
+        `
+
 const Home: NextPage = () => {
 
     function renderHeroBanner() {
-        return <div>Hero Banner</div>
+        const HeroBanner = styled.div`
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;   
+            font-size: 2rem;            
+        `
+
+        return (
+        <HeroBanner>
+            <h1>
+                Zan Aslett
+            </h1>
+            <h3>
+                Engineer - Enthusiast - Lifelong Learner
+            </h3>
+        </HeroBanner>)
     }
 
     function renderAboutMe() {
-        const AboutMeBlock = styled.div`
-            display: flex;
+        const AboutMeBlock = styled.div`            
+            font-size: 1.8rem;
+        `
+
+        const AboutMeHeader = styled.h1`
+            margin: 0;
+        `
+
+        const SummarySection = styled.div`
+            display: flex;            
+        `
+
+        const SummaryImage = styled.img`
+            margin: 16px;
+        `
+
+        const SummaryText = styled.div`
+            margin: 0;
+        `
+
+        const MotivationSection = styled.div`
+            
         `
 
         return (
         <AboutMeBlock>
-            <div>
-                <h2>About Me</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-            <img src={'https://picsum.photos/200/300'}/>
+            <AboutMeHeader>About Me</AboutMeHeader>
+            <SummarySection>
+                <SummaryImage src={'https://picsum.photos/200/300'}/>
+                <SummaryText>
+                    I'm a software engineer with a drive for innovation and the cutting edge.
+                    In the fast moving world of decentralization, I pride myself in the ability
+                    to learn new technologies and skills quickly.
+                </SummaryText>
+            </SummarySection>
+            <MotivationSection>
+                <h4>
+                    What motivates me
+                </h4>
+                <ul>
+                    <li>
+                        Freedom to take ownership over interesting problems
+                    </li>
+                    <li>
+                        Building cool projects that reach and impact many people
+                    </li>
+                    <li>
+                        Architecting software solutions focused on long-term scalability and efficiency
+                    </li>
+                </ul>
+            </MotivationSection>
         </AboutMeBlock>)
     }
 
@@ -107,6 +179,7 @@ const Home: NextPage = () => {
     return (
         <AppContainer>
             {renderHeroBanner()}
+            <StyledHr/>
             <ContentContainer>
                 <MainContent>
                     {renderAboutMe()}
