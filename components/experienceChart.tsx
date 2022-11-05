@@ -9,7 +9,7 @@ enum ExperienceSources {
 }
 
 const ChartContainer = styled.div`
-    display: flex;
+    display: flex;    
 `
 
 const SourceSelection = styled.ul`
@@ -126,10 +126,13 @@ const ExperienceChart = () => {
     }
 
     return (
-        <ChartContainer>
-            {renderSourceSelection()}
-            {renderExperiencePoints()}
-        </ChartContainer>
+        <>
+            <h1>Experience</h1>
+            <ChartContainer>
+                {renderSourceSelection()}
+                {renderExperiencePoints()}
+            </ChartContainer>
+        </>
     )
 }
 

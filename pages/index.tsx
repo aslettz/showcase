@@ -1,7 +1,8 @@
 import type {NextPage} from 'next'
 import styled from "styled-components";
 import ExperienceChart from "../components/experienceChart";
-import App from "next/app";
+import Image from 'next/image'
+
 
 
 const AppContainer = styled.div`
@@ -24,17 +25,27 @@ const SideContent = styled.div`
 `
 
 const StyledHr = styled.hr`            
-            height: 1px;
-            margin: 50px 0;
-            background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), color-stop(0.5, #333333), to(rgba(0, 0, 0, 0)));
-            background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
-            background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
-            background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
-            background: linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
-            border: 0;
-            width: 84%
-            padding: 0 8rem;
-        `
+    height: 1px;
+    margin: 50px 0;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), color-stop(0.5, #333333), to(rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: linear-gradient(left, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    border: 0;
+    width: 84%
+    padding: 0 8rem;
+`
+
+const VerticleRule = styled.div`
+    width: 2px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(rgba(0, 0, 0, 0)), color-stop(0.5, #333333), to(rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    background: linear-gradient(top, rgba(0, 0, 0, 0), #333333, rgba(0, 0, 0, 0));
+    margin: 16px;
+`
 
 const Home: NextPage = () => {
 
@@ -64,15 +75,33 @@ const Home: NextPage = () => {
         `
 
         const AboutMeHeader = styled.h1`
-            margin: 0;
+            margin: 0 0 8px 0;
         `
 
         const SummarySection = styled.div`
-            display: flex;            
+            display: flex;      
+            flex-wrap: wrap;      
         `
 
-        const SummaryImage = styled.img`
-            margin: 16px;
+        const SummaryImage = styled.div`
+            width: 50%;
+            border-radius: 4px;
+
+            > div {
+                position: unset !important;
+                overflow: hidden;
+            }
+    
+            .image {
+                object-fit: contain;
+                width: 100% !important;
+                position: relative !important;
+                height: unset !important;
+            }                                                 
+        `
+
+        const AboutMeText = styled.div`
+            width: 50%;
         `
 
         const SummaryText = styled.div`
@@ -87,29 +116,34 @@ const Home: NextPage = () => {
         <AboutMeBlock>
             <AboutMeHeader>About Me</AboutMeHeader>
             <SummarySection>
-                <SummaryImage src={'https://picsum.photos/200/300'}/>
-                <SummaryText>
-                    I'm a software engineer with a drive for innovation and the cutting edge.
-                    In the fast moving world of decentralization, I pride myself in the ability
-                    to learn new technologies and skills quickly.
-                </SummaryText>
+                <SummaryImage>
+                    <Image src={'/headshot.jpg'} width={500} height={700} objectFit={'contain'} priority />
+                </SummaryImage>
+                <AboutMeText>
+                    <SummaryText>
+                        I'm a software engineer with a drive for innovation and the cutting edge.
+                        In the fast moving world of decentralization, I pride myself in the ability
+                        to learn new technologies and skills quickly.
+                    </SummaryText>
+                    <MotivationSection>
+                        <h4>
+                            What motivates me
+                        </h4>
+                        <ul>
+                            <li>
+                                Freedom to take ownership over interesting problems
+                            </li>
+                            <li>
+                                Building cool projects that reach and impact many people
+                            </li>
+                            <li>
+                                Architecting software solutions focused on long-term scalability and efficiency
+                            </li>
+                        </ul>
+                    </MotivationSection>
+                </AboutMeText>
             </SummarySection>
-            <MotivationSection>
-                <h4>
-                    What motivates me
-                </h4>
-                <ul>
-                    <li>
-                        Freedom to take ownership over interesting problems
-                    </li>
-                    <li>
-                        Building cool projects that reach and impact many people
-                    </li>
-                    <li>
-                        Architecting software solutions focused on long-term scalability and efficiency
-                    </li>
-                </ul>
-            </MotivationSection>
+
         </AboutMeBlock>)
     }
 
@@ -183,8 +217,10 @@ const Home: NextPage = () => {
             <ContentContainer>
                 <MainContent>
                     {renderAboutMe()}
+                    <StyledHr/>
                     {renderExperience()}
                 </MainContent>
+                <VerticleRule/>
                 <SideContent>
                     {renderSkillsDisplay()}
                 </SideContent>
