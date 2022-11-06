@@ -5,4 +5,6 @@
 /* can now reference my font */
 body {
     font-family: 'Roboto Slab', 'Montserrat', 'Playfair Display';
+    /*color: white;*/
+    /*background-color: #2C3333;*/
 }

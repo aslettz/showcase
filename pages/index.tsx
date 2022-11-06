@@ -1,8 +1,10 @@
 import type {NextPage} from 'next'
 import styled from "styled-components";
-import ExperienceChart from "../components/experienceChart";
+import ExperienceChart, {ExperienceSources} from "../components/experienceChart";
 import Image from 'next/image'
-
+import {useEffect, useState} from "react";
+import SkillsDisplay from "../components/skillsDisplay";
+import {useInView} from "react-intersection-observer";
 
 
 const AppContainer = styled.div`
@@ -11,7 +13,7 @@ const AppContainer = styled.div`
 
 const ContentContainer = styled.div`
     display: flex;
-    padding: 0 8vw;
+    padding: 0 2vw 0 6vw;
     flex-wrap: wrap;    
     justify-content: center;
 `
@@ -22,6 +24,7 @@ const MainContent = styled.div`
 
 const SideContent = styled.div`
     padding: 12px;
+    min-width: fit-content;
 `
 
 const StyledHr = styled.hr`            
@@ -48,6 +51,21 @@ const VerticleRule = styled.div`
 `
 
 const Home: NextPage = () => {
+    const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources | null>(null)
+    const [previouslySelectedExperienceSource, setPreviouslySelectedExperienceSource] = useState<ExperienceSources | null>(null)
+
+    const {ref, inView} = useInView({trackVisibility: true, delay: 100});
+
+    useEffect(() => {
+        if (!inView) {
+            setPreviouslySelectedExperienceSource(selectedExperienceSource);
+            setSelectedExperienceSource(null);
+        }
+        if (inView) {
+            setSelectedExperienceSource(previouslySelectedExperienceSource || ExperienceSources.Awardco );
+        }
+
+    }, [inView])
 
     function renderHeroBanner() {
         const HeroBanner = styled.div`
@@ -76,6 +94,7 @@ const Home: NextPage = () => {
 
         const AboutMeHeader = styled.h1`
             margin: 0 0 8px 0;
+            font-size: 4rem;
         `
 
         const SummarySection = styled.div`
@@ -121,6 +140,7 @@ const Home: NextPage = () => {
                 </SummaryImage>
                 <AboutMeText>
                     <SummaryText>
+                        {/* eslint-disable-next-line react/no-unescaped-entities */}
                         I'm a software engineer with a drive for innovation and the cutting edge.
                         In the fast moving world of decentralization, I pride myself in the ability
                         to learn new technologies and skills quickly.
@@ -148,66 +168,15 @@ const Home: NextPage = () => {
     }
 
     function renderExperience() {
-        return <ExperienceChart/>
+        return (
+            <div ref={ref}>
+                <ExperienceChart onSelectionChange={setSelectedExperienceSource} selectedExperienceSource={selectedExperienceSource}/>
+            </div>)
     }
 
     function renderSkillsDisplay() {
-        const SkillsDisplay = styled.div`
-            
-        `;
 
-        const ProficiencySection = styled.div`
-            display: flex;
-            flex-direction: column;
-        `;
-
-        const ProficiencyTitle = styled.h3`
-            margin: 2px 0;
-        `;
-
-        const ProficiencyItemGroup = styled.div`
-            display: flex;
-        `;
-
-        const ProficiencyItem = styled.h4`
-            border: 1px solid black;
-            border-radius: 4px;
-            padding: 4px;
-            margin: 0 4px;
-        `;
-
-
-        return (
-        <SkillsDisplay>
-            <h2>Proficiencies</h2>
-
-            <ProficiencySection>
-                <ProficiencyTitle>Advanced</ProficiencyTitle>
-                <ProficiencyItemGroup>
-                    <ProficiencyItem>git</ProficiencyItem>
-                    <ProficiencyItem>Typescript/Javascript</ProficiencyItem>
-                    <ProficiencyItem>Solidity</ProficiencyItem>
-                </ProficiencyItemGroup>
-            </ProficiencySection>
-
-            <ProficiencySection>
-                <ProficiencyTitle>Experienced</ProficiencyTitle>
-                <ProficiencyItemGroup>
-                    <ProficiencyItem>Foundry (Forge/Anvil)</ProficiencyItem>
-                    <ProficiencyItem>Remix</ProficiencyItem>
-                    <ProficiencyItem>ERC Token Standards</ProficiencyItem>
-                </ProficiencyItemGroup>
-            </ProficiencySection>
-
-            <ProficiencySection>
-                <ProficiencyTitle>Familiar</ProficiencyTitle>
-                <ProficiencyItemGroup>
-                    <ProficiencyItem>ethers.js</ProficiencyItem>
-                    <ProficiencyItem>web3.js</ProficiencyItem>
-                </ProficiencyItemGroup>
-            </ProficiencySection>
-
-        </SkillsDisplay>)
+        return <SkillsDisplay selectedExperienceSource={selectedExperienceSource}/>
     }
 
     return (
@@ -219,6 +188,9 @@ const Home: NextPage = () => {
                     {renderAboutMe()}
                     <StyledHr/>
                     {renderExperience()}
+                    <div>
+                        Contact me
+                    </div>
                 </MainContent>
                 <VerticleRule/>
                 <SideContent>

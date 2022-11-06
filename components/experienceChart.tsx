@@ -1,7 +1,6 @@
-import {useState} from "react";
 import styled from "styled-components";
 
-enum ExperienceSources {
+export enum ExperienceSources {
     Awardco,
     Contract,
     RedSky,
@@ -10,6 +9,11 @@ enum ExperienceSources {
 
 const ChartContainer = styled.div`
     display: flex;    
+    font-size: 1.8rem;
+`
+
+const ChartHeader = styled.h1`
+    font-size: 4rem;
 `
 
 const SourceSelection = styled.ul`
@@ -21,7 +25,10 @@ const SourceSelection = styled.ul`
 
 const SourceItem = styled.li<{ isSelected: boolean }>`
     padding: 4px;
-    background-color: ${(props) => {return (props.isSelected ? '#0000FF' : '#FFFFFF')}};
+    margin: 4px;
+    border-radius: 4px;
+    background-color: ${(props) => {return (props.isSelected ? '#9C9C9C55' : '#FFFFFF')}};
+    box-shadow: ${(props) => {return (props.isSelected ? '3px 3px 1px' : 'none')}};
     cursor: pointer;
 `
 
@@ -29,8 +36,8 @@ const ExperienceContainer = styled.div`
     padding: 8px;
 `
 
-const ExperienceHeader = styled.h2`
-
+const ExperienceHeader = styled.h2`    
+    margin: 0 0 8px 0;
 `
 
 const ExperienceList = styled.ul`
@@ -41,8 +48,12 @@ const ExperienceListItem = styled.li`
     
 `
 
-const ExperienceChart = () => {
-    const [jobSelectedIndex, setJobSelectedIndex] = useState(ExperienceSources.Awardco)
+export interface ExperienceChartProps {
+    selectedExperienceSource: ExperienceSources | null;
+    onSelectionChange(experienceSource: ExperienceSources): void;
+}
+
+const ExperienceChart = (props: ExperienceChartProps) => {
 
     function renderBYUExperience() {
         return (
@@ -93,7 +104,7 @@ const ExperienceChart = () => {
     }
 
     function renderExperiencePoints() {
-        switch (jobSelectedIndex){
+        switch (props.selectedExperienceSource){
             case ExperienceSources.Awardco:
                 return renderAwardcoExperience();
             case ExperienceSources.Contract:
@@ -110,16 +121,16 @@ const ExperienceChart = () => {
     function renderSourceSelection() {
         return (
         <SourceSelection>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Awardco)} isSelected={jobSelectedIndex==ExperienceSources.Awardco}>
+            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.Awardco)} isSelected={props.selectedExperienceSource==ExperienceSources.Awardco}>
                 Awardco
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.Contract)} isSelected={jobSelectedIndex==ExperienceSources.Contract}>
+            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.Contract)} isSelected={props.selectedExperienceSource==ExperienceSources.Contract}>
                 Contract
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.RedSky)} isSelected={jobSelectedIndex==ExperienceSources.RedSky}>
+            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.RedSky)} isSelected={props.selectedExperienceSource==ExperienceSources.RedSky}>
                 RedSky Tech.
             </SourceItem>
-            <SourceItem onClick={() => setJobSelectedIndex(ExperienceSources.BYU)} isSelected={jobSelectedIndex==ExperienceSources.BYU}>
+            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.BYU)} isSelected={props.selectedExperienceSource==ExperienceSources.BYU}>
                 BYU
             </SourceItem>
         </SourceSelection>);
@@ -127,7 +138,7 @@ const ExperienceChart = () => {
 
     return (
         <>
-            <h1>Experience</h1>
+            <ChartHeader>Experience</ChartHeader>
             <ChartContainer>
                 {renderSourceSelection()}
                 {renderExperiencePoints()}
