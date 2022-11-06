@@ -5,6 +5,7 @@ import Image from 'next/image'
 import {useEffect, useState} from "react";
 import SkillsDisplay from "../components/skillsDisplay";
 import {useInView} from "react-intersection-observer";
+import Link from "next/link";
 
 
 const AppContainer = styled.div`
@@ -179,6 +180,49 @@ const Home: NextPage = () => {
         return <SkillsDisplay selectedExperienceSource={selectedExperienceSource}/>
     }
 
+    function renderHeroFooter() {
+        const HeroFooter = styled.div`
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;   
+            font-size: 1.5rem;            
+        `
+
+        const ContactLinks = styled.ul`
+            list-style-type: none;
+            display: flex;              
+        `
+
+        const ContactLink = styled.li`
+            margin: 8px;
+        `
+
+        return (
+            <HeroFooter>
+                <h1>
+                    Contact Me
+                </h1>
+                <ContactLinks>
+                    <ContactLink>
+                        <Link href={''}>
+                            GitHub
+                        </Link>
+                    </ContactLink>
+                    <ContactLink>
+                        <Link href={''}>
+                            Email
+                        </Link>
+                    </ContactLink>
+                    <ContactLink>
+                        <Link href={''}>
+                            Linkedin
+                        </Link>
+                    </ContactLink>
+                </ContactLinks>
+            </HeroFooter>)
+    }
+
     return (
         <AppContainer>
             {renderHeroBanner()}
@@ -188,15 +232,14 @@ const Home: NextPage = () => {
                     {renderAboutMe()}
                     <StyledHr/>
                     {renderExperience()}
-                    <div>
-                        Contact me
-                    </div>
                 </MainContent>
                 <VerticleRule/>
                 <SideContent>
                     {renderSkillsDisplay()}
                 </SideContent>
             </ContentContainer>
+            <StyledHr/>
+            {renderHeroFooter()}
         </AppContainer>
     )
 }
