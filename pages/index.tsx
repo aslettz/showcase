@@ -186,23 +186,28 @@ const Home: NextPage = () => {
             display: flex;
             flex-direction: column;
             align-items: center;   
-            font-size: 1.5rem;            
+            font-size: 1rem;            
         `
 
         const ContactLinks = styled.ul`
             list-style-type: none;
             display: flex;              
+            padding: 0;
         `
 
         const ContactLink = styled.li`
             margin: 8px;
         `
 
+        const FooterTitle = styled.h1`
+            margin: 4px;
+        `
+
         return (
             <HeroFooter>
-                <h1>
+                <FooterTitle>
                     Contact Me
-                </h1>
+                </FooterTitle>
                 <ContactLinks>
                     <ContactLink>
                         <Link href={''}>
