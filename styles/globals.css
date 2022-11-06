@@ -1,33 +1,10 @@
-html,
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+
+/* can now reference my font */
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: #A9A9A9;
+    font-family: 'Roboto Slab', 'Montserrat', 'Playfair Display';
+    /*color: white;*/
+    /*background-color: #2C3333;*/
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/*
-carrot orange: #F18F01
-Blue Munsell: #048BA8
-Charcoal: #2E4057
-Android Green: #99C24D
-Jet: #2F2D2E
-
---
-sky: #CAEBF2
-carbon: #A9A9A9
-watermelon: #FF3B3F
-neutral: #EFEFEF
-
-
-*/
