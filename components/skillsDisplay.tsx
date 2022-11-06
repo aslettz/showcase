@@ -28,9 +28,9 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
             case ExperienceSources.Awardco:
                 return ["git", "MS SQL Server"];
             case ExperienceSources.Contract:
-                return ["Solidity", "Foundry", "Remix"];
+                return ["git", "Solidity", "Foundry (Forge/Anvil)", "Remix"];
             case ExperienceSources.RedSky:
-                return ["Typescript", "git"];
+                return ["Typescript/Javascript", "git"];
             case ExperienceSources.BYU:
                 return ["git"];
             default:
@@ -55,7 +55,7 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
 
             <ProficiencySection>
                 <ProficiencyTitle>Familiar (Tutorials and/or Single Project)</ProficiencyTitle>
-                <ProficiencyItemGroup highlightedSkills={getHighlightSkills()} groupSkills={['ethers.js', 'web3,js']}/>
+                <ProficiencyItemGroup highlightedSkills={getHighlightSkills()} groupSkills={['ethers.js', 'web3.js']}/>
             </ProficiencySection>
 
         </SkillsDisplayContainer>
