@@ -21,10 +21,8 @@ export default async function handler(
   const blueByteStr = address[blueIndex] + address[blueIndex + 1];
 
   const colorHexStr = '#' + redByteStr + greenByteStr + blueByteStr;
-  console.log(colorHexStr);
 
   const color = Color(colorHexStr);
-  // @ts-ignore
   const output = await sharp('public/aslettco.png')
       .tint(color.object())
       .toBuffer();
