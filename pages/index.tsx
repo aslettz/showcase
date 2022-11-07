@@ -188,7 +188,9 @@ const Home: NextPage = () => {
             display: flex;
             flex-direction: column;
             align-items: center;   
-            font-size: 1rem;            
+            font-size: 1rem;  
+            background: url('/aslettco-transparent.png') no-repeat center;
+            background-size: 100px auto;              
         `
 
         const ContactLinks = styled.ul`
