@@ -8,16 +8,16 @@ import random
 
 class handler(BaseHTTPRequestHandler):
 
-    def do_GET(self, seed):
+    def do_GET(self):
         self.send_response(200)
         self.send_header('Content-type','image/png')
         self.end_headers()
 
-        random.seed(seed + 'RED')
+        random.seed('RED')
         r = random.randint(0, 255)
-        random.seed(seed + 'GREEN')
+        random.seed('GREEN')
         g = random.randint(0, 255)
-        random.seed(seed + 'BLUE')
+        random.seed('BLUE')
         b = random.randint(0, 255)
         im = Image.open('white-logo.png')
         im = im.convert('RGBA')
