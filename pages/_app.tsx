@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return(
       <WagmiConfig client={client}>
           <Head>
-              <title>Zan Aslett</title>
+              <title>Aslettco Web Engineering</title>
               <meta name="description" content="Portfolio site for Zan Aslett"/>
-              <link rel="icon" href="../public/favicon.ico"/>
+              <link rel="icon" href="/aslettco.png"/>
               <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
           </Head>
           <Component {...pageProps} />

@@ -8,6 +8,8 @@ export interface ProficiencyItemGroupProps {
 
 const ProficiencyItemGroupContainer = styled.div`
             display: flex;
+            flex-wrap: wrap;
+            max-width: 20vw;
         `;
 
 const ProficiencyItemGroup = (props: ProficiencyItemGroupProps) => {
