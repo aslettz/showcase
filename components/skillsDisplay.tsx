@@ -8,10 +8,10 @@ const SkillsDisplayContainer = styled.div`
 `
 
 const ProficiencySection = styled.div`
-            display: flex;
-            flex-direction: column;
-            margin-top: 8px;
-        `;
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+`;
 
 const ProficiencyTitle = styled.h3`
             margin: 2px 0;

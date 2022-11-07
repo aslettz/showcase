@@ -74,7 +74,9 @@ const Home: NextPage = () => {
             display: flex;
             flex-direction: column;
             align-items: center;   
-            font-size: 2rem;            
+            font-size: 2rem;       
+            background: url('/aslettco-transparent.png') no-repeat center;
+            background-size: 300px auto;            
         `
 
         return (
