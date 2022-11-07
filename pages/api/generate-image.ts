@@ -1,5 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
+import path from 'path'
 import sharp from 'sharp';
 import Color from 'color';
 
@@ -25,9 +26,10 @@ export default async function handler(
   const blueByteStr = address[blueIndex] + address[blueIndex + 1];
 
   const colorHexStr = '#' + redByteStr + greenByteStr + blueByteStr;
-
   const color = Color(colorHexStr);
-  const output = await sharp('public/aslettco.png')
+
+  const filePath = path.resolve(process.cwd(), 'public/aslettco.png')
+  const output = await sharp(filePath)
       .tint(color.object())
       .toBuffer();
 
