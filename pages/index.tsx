@@ -6,6 +6,8 @@ import {useEffect, useState} from "react";
 import SkillsDisplay from "../components/skillsDisplay";
 import {useInView} from "react-intersection-observer";
 import Link from "next/link";
+import {useAccount, useConnect, useDisconnect} from "wagmi";
+import {InjectedConnector} from "@wagmi/core";
 
 
 const AppContainer = styled.div`
@@ -52,6 +54,12 @@ const VerticleRule = styled.div`
 `
 
 const Home: NextPage = () => {
+    const { address, isConnected } = useAccount()
+    const { connect } = useConnect({
+        connector: new InjectedConnector(),
+    })
+    const { disconnect } = useDisconnect()
+
     const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources | null>(null)
     const [previouslySelectedExperienceSource, setPreviouslySelectedExperienceSource] = useState<ExperienceSources | null>(null)
 
@@ -67,6 +75,17 @@ const Home: NextPage = () => {
         }
 
     }, [inView])
+
+    function renderWeb3Button() {
+        if (isConnected)
+            return (
+                <div>
+                    Connected to {address}
+                    <button onClick={() => disconnect()}>Disconnect</button>
+                </div>
+            )
+        return <button onClick={() => connect()}>Connect Wallet</button>
+    }
 
     function renderHeroBanner() {
         const HeroBanner = styled.div`
@@ -87,6 +106,7 @@ const Home: NextPage = () => {
             <h3>
                 Engineer - Enthusiast - Lifelong Learner
             </h3>
+            {renderWeb3Button()}
         </HeroBanner>)
     }
 
