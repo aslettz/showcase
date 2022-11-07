@@ -87,6 +87,14 @@ const Home: NextPage = () => {
         return <button onClick={() => connect()}>Connect Wallet</button>
     }
 
+    function renderGenerateNftButton() {
+        if (!isConnected) {
+            return;
+        }
+
+        return <button> <Link href={`/api/generate-image?address=${address}`}>Generate NFT Image</Link></button>
+    }
+
     function renderHeroBanner() {
         const HeroBanner = styled.div`
             width: 100%;
@@ -107,6 +115,7 @@ const Home: NextPage = () => {
                 Engineer - Enthusiast - Lifelong Learner
             </h3>
             {renderWeb3Button()}
+            {renderGenerateNftButton()}
         </HeroBanner>)
     }
 
