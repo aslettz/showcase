@@ -11,7 +11,11 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<Data>
 ) {
-  const address = req.query["address"];
+  let address = req.query["address"];
+  if (address == undefined || address == null || address.length < 42) {
+    address = "0x16F5A35647D6F03D5D3da7b35409D65ba03aF399";
+  }
+
   const redIndex = Math.round((Math.random() * 38)) + 2;
   const greenIndex = Math.round((Math.random() * 38)) + 2;
   const blueIndex = Math.round((Math.random() * 38)) + 2;
