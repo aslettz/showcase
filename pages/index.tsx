@@ -163,6 +163,9 @@ const Home: NextPage = () => {
             
         `
 
+        const Temp = styled.li`
+        `
+
         return (
         <AboutMeBlock>
             <AboutMeHeader>About Me</AboutMeHeader>
@@ -177,14 +180,14 @@ const Home: NextPage = () => {
                         In the fast moving world of decentralization, I pride myself in the ability
                         to learn new technologies and skills quickly.
                     </SummaryText>
-                    <MotivationSection>
+                    <MotivationSection className={'bodyText'}>
                         <h4>
                             What motivates me
                         </h4>
                         <ul>
-                            <li>
+                            <Temp className={'bodyText'}>
                                 Freedom to take ownership over interesting problems
-                            </li>
+                            </Temp>
                             <li>
                                 Building cool projects that reach and impact many people
                             </li>

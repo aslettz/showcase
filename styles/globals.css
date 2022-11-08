@@ -1,10 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Lora');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* can now reference my font */
 body {
-    font-family: 'Roboto Slab', 'Montserrat', 'Playfair Display';
+    font-family: 'Lora';
     /*color: white;*/
     /*background-color: #2C3333;*/
+}
+
+h1, h2, h3 {
+    font-family: 'Raleway', sans-serif;
+    text-transform: capitalize;
+    color: #464444;
+}
+
+h4, li {
+    font-family: 'Poppins', sans-serif;
+    text-transform: capitalize;
+    color: #171111;
+}
+
+.bodyText {
+    color: #990000;
 }
