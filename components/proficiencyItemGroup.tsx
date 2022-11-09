@@ -6,12 +6,6 @@ export interface ProficiencyItemGroupProps {
     groupSkills: string[];
 }
 
-const ProficiencyItemGroupContainer = styled.div`
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 20vw;
-        `;
-
 const ProficiencyItemGroup = (props: ProficiencyItemGroupProps) => {
 
     function renderProficiencyItems() {
@@ -32,3 +26,8 @@ const ProficiencyItemGroup = (props: ProficiencyItemGroupProps) => {
 }
 
 export default ProficiencyItemGroup;
+
+const ProficiencyItemGroupContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;            
+`;

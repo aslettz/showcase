@@ -1,54 +1,5 @@
 import styled from "styled-components";
-
-export enum ExperienceSources {
-    Awardco,
-    Contract,
-    RedSky,
-    BYU,
-    SideProjects
-}
-
-const ChartContainer = styled.div`
-    display: flex;    
-    font-size: 1.8rem;
-`
-
-const ChartHeader = styled.h1`
-    font-size: 4rem;
-`
-
-const SourceSelection = styled.ul`
-    list-style-type: none;
-    padding: 8px;
-    border-right: 1px solid black;
-    min-width: fit-content;
-`
-
-const SourceItem = styled.li<{ isSelected: boolean }>`
-    padding: 4px;
-    margin: 4px;
-    border-radius: 4px;
-    background-color: ${(props) => {return (props.isSelected ? '#9C9C9C55' : '#FFFFFF')}};
-    box-shadow: ${(props) => {return (props.isSelected ? '3px 3px 1px' : 'none')}};
-    cursor: pointer;
-`
-
-const ExperienceContainer = styled.div`
-    padding: 8px;
-`
-
-const ExperienceHeader = styled.h2`    
-    margin: 0 0 8px 0;
-`
-
-const ExperienceList = styled.ul`
-    
-`
-
-const ExperienceListItem = styled.li`
-    font-size: 1.5rem;
-    padding: 4px;
-`
+import {ExperienceSources} from "../pages";
 
 export interface ExperienceChartProps {
     selectedExperienceSource: ExperienceSources | null;
@@ -187,3 +138,57 @@ const ExperienceChart = (props: ExperienceChartProps) => {
 }
 
 export default ExperienceChart;
+
+const ChartContainer = styled.div`
+    display: flex; 
+    @media screen and (max-width: 700px) {
+        flex-direction: column;
+    }       
+`;
+
+const ChartHeader = styled.h1`    
+    margin: 0;
+`;
+
+const SourceSelection = styled.ul`
+    list-style-type: none;
+    padding: 8px;
+    border-right: 1px solid black;
+    min-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    @media screen and (max-width: 700px) {
+        flex-direction: row;
+        border-bottom: 1px solid black;
+        border-right: unset;
+        flex-wrap: wrap;
+        align-items: center;
+    }       
+`;
+
+const SourceItem = styled.li<{ isSelected: boolean }>`
+    padding: 4px;
+    margin: 4px;
+    border-radius: 4px;
+    background-color: ${(props) => {return (props.isSelected ? '#9C9C9C55' : '#FFFFFF')}};
+    box-shadow: ${(props) => {return (props.isSelected ? '3px 3px 1px' : 'none')}};
+    cursor: pointer;
+`;
+
+const ExperienceContainer = styled.div`
+    padding: 8px;
+`;
+
+const ExperienceHeader = styled.h2`    
+    margin: 0 0 8px 0;
+`;
+
+const ExperienceList = styled.ul`
+    
+`;
+
+const ExperienceListItem = styled.li`
+    font-size: 1.5rem;
+    padding: 4px;
+`;
