@@ -1,30 +1,20 @@
 import styled from "styled-components";
 import ProficiencyItemGroup from "./proficiencyItemGroup";
-import {ExperienceSources} from "./experienceChart";
-
-const SkillsDisplayContainer = styled.div`
-    position: sticky;    /* Keep in position on scroll */
-    top: 30%;
-`
-
-const ProficiencySection = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
-`;
-
-const ProficiencyTitle = styled.h3`
-            margin: 2px 0;
-        `;
+import {ExperienceSources} from "../pages/index";
+import {useState} from "react";
 
 export interface SkillsDisplayProps {
     selectedExperienceSource: ExperienceSources | null;
 }
 
 const SkillsDisplay = (props: SkillsDisplayProps) => {
-
+    const [shouldHighlightSkills, setShouldHighlightSkills] = useState(true);
 
     function getHighlightSkills() {
+        if (!shouldHighlightSkills) {
+            return [];
+        }
+
         switch (props.selectedExperienceSource) {
             case ExperienceSources.Awardco:
                 return ["git", "MS SQL Server", "Agile Development"];
@@ -44,7 +34,18 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
 
     return (
         <SkillsDisplayContainer>
-            <h2>Proficiencies</h2>
+
+            <TitleAndToggleContainer>
+                <Title>Proficiencies</Title>
+
+                <HighlightToggleContainer>
+                    <HighlightToggleTitle>Highlight Skills</HighlightToggleTitle>
+                    <>
+                        <HighlightToggle checked={shouldHighlightSkills} type={'checkbox'} id={'highlight-switch'} onClick={() => {setShouldHighlightSkills(!shouldHighlightSkills)}}/>
+                        <HighlightLabel htmlFor={"highlight-switch"}>Highlight skills</HighlightLabel>
+                    </>
+                </HighlightToggleContainer>
+            </TitleAndToggleContainer>
 
             <ProficiencySection>
                 <ProficiencyTitle>Advanced (Many Projects)</ProficiencyTitle>
@@ -74,3 +75,84 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
 }
 
 export default SkillsDisplay;
+
+const SkillsDisplayContainer = styled.div`
+    position: sticky;    /* Keep in position on scroll */
+    top: 5%;
+    @media screen and (max-width: 900px) {
+        position: unset;
+        top: unset;
+    }
+`
+
+const TitleAndToggleContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+`
+
+const Title = styled.h2`
+
+`
+
+const HighlightToggle = styled.input`
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    
+    :checked + label {
+        background: #bada55;
+    }
+    
+    :checked + label:after {
+        left: calc(100% - 2px);
+        transform: translateX(-100%);
+    }
+    
+    :active:after {
+        width: 130px;
+    }
+`
+
+const HighlightToggleContainer = styled.div`    
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+`;
+
+const HighlightToggleTitle = styled.div`
+    
+`
+
+const HighlightLabel = styled.label`
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 36px;
+    height: 24px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    
+    :after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+`
+
+const ProficiencySection = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+`;
+
+const ProficiencyTitle = styled.h3`
+    margin: 2px 0;
+`;

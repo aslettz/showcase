@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ProficiencyItemContainer = styled.h4<{isHighlighted: boolean}>`
+const ProficiencyItemContainer = styled.div<{isHighlighted: boolean}>`
     border: 1px solid black;
     border-radius: 4px;
     padding: 4px;
