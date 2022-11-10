@@ -4,6 +4,7 @@ import ToggleSwitch from "./toggleSwitch";
 import {useAccount, useConnect, useDisconnect} from "wagmi";
 import {InjectedConnector} from "@wagmi/core";
 import Link from "next/link";
+import ZButton from "./zButton";
 
 export interface HeaderProps {
     shouldUseNftColors: boolean;
@@ -22,10 +23,10 @@ const Header = (props: HeaderProps) => {
         if (isConnected)
             return (
                 <div>
-                    <button onClick={() => disconnect()}>Disconnect</button>
+                    <ZButton text={"Disconnect"} onClick={() => disconnect()}/>
                 </div>
             )
-        return <button onClick={() => connect()}>Connect Wallet</button>
+        return <ZButton text={"Connect Wallet"} onClick={() => connect()}/>
     }
 
     function renderGenerateNftButton() {
@@ -33,7 +34,11 @@ const Header = (props: HeaderProps) => {
             return;
         }
 
-        return <button> <Link href={`/api/generate-image?address=${address}`}>Generate NFT Image</Link></button>
+        const openInNewTab = (url: string) => {
+            window.open(url, '_blank', 'noopener,noreferrer');
+        };
+
+        return <ZButton text={"Generate NFT Art"} onClick={() => openInNewTab('/api/generate-image?address=${address}')}/>
     }
 
     return (
@@ -85,7 +90,8 @@ const HeaderSubtitle = styled.h2`
 `;
 
 const LeftContent = styled.div`
-
+    display: flex;
+    flex-direction: column;
 `;
 
 const CenterContent = styled.div`
