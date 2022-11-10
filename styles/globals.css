@@ -14,3 +14,8 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
     color: #464444;
 }
+
+.underline {
+    text-decoration: underline;
+    text-decoration-color: aqua;
+}

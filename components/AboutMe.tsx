@@ -33,9 +33,9 @@ const AboutMe = (props: AboutMeProps) => {
                 </GridSummary>
                 <GridMotivation>
                     <MotivationSection>
-                        <h4>
+                        <MotivateMeHeader>
                             What motivates me
-                        </h4>
+                        </MotivateMeHeader>
                         <ul>
                             <li>
                                 Freedom to take ownership over interesting problems
@@ -127,3 +127,7 @@ const SummaryText = styled.div`
 const MotivationSection = styled.div`
             
 `
+
+const MotivateMeHeader = styled.h4`
+      
+`;
