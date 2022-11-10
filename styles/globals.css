@@ -6,12 +6,11 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    text-transform: capitalize;
     color: #171111;
 }
 
 h1, h2, h3, h4 {
     font-family: 'Raleway', sans-serif;
-    text-transform: capitalize;
+    text-transform: uppercase;
     color: #464444;
 }
