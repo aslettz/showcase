@@ -3,7 +3,6 @@ import type { AppProps } from 'next/app'
 import { WagmiConfig, createClient } from 'wagmi'
 import { getDefaultProvider } from 'ethers'
 import Head from "next/head";
-import Header from "../components/header";
 
 const web3Client = createClient({
   autoConnect: false,

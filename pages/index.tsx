@@ -1,11 +1,11 @@
 import type {NextPage} from 'next'
 import ExperienceChart from "../components/experienceChart";
 import SkillsDisplay from "../components/skillsDisplay";
-import Header from "../components/header";
 import {useState} from "react";
-import AboutMe from "../components/AboutMe";
 import styled from "styled-components";
 import useAccentColor from "../hooks/useAccentColor";
+import Header from "../components/header";
+import AboutMe from "../components/AboutMe";
 
 export enum ExperienceSources {
     Awardco,
@@ -42,14 +42,18 @@ const Home: NextPage = () => {
 export default Home;
 
 const IndexPageContainer = styled.div`
-    padding: 0 2%;
+    padding: 0 2% 0 8%;
+    @media screen and (max-width: 900px) {
+        padding: 0 2%;    
+    }
 `;
 
 const MainContentGrid = styled.div`
     display: grid;      
     grid-template-columns: repeat(3, 1fr);    
     grid-auto-rows: minmax(100px, auto);
-    gap: 10px;        
+    column-gap: 10px;
+    row-gap: 40px;        
     @media screen and (max-width: 900px) {
         justify-items: center;    
     }

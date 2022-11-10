@@ -41,4 +41,5 @@ const HeaderTitle = styled.h1`
 
 const HeaderSubtitle = styled.h2`
     margin: 0;
+    text-align: center;
 `;
