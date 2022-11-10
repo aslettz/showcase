@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import Image from 'next/image';
+import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
 
 export interface AboutMeProps {
 
 }
 
 const AboutMe = (props: AboutMeProps) => {
+    const accentColorConfig = useAccentColor();
+
 
     return (
         <AboutMeBlock>
@@ -16,7 +19,7 @@ const AboutMe = (props: AboutMeProps) => {
                     </AboutMeHeader>
                 </GridTitle>
                 <GridPicture>
-                    <SummaryImage>
+                    <SummaryImage accentColorConfig={accentColorConfig}>
                         <Image src={'/headshot.jpg'} width={200} height={300} objectFit={'contain'} priority />
                     </SummaryImage>
                 </GridPicture>
@@ -65,7 +68,8 @@ const AboutMeHeader = styled.h1`
 
 const AboutMeContent = styled.div`
     display: grid;        
-    gap: 10px;
+    column-gap: 24px;
+    row-gap: 8px;
     grid-template-areas:
         "picture title"
         "picture summary"
@@ -99,19 +103,20 @@ const GridMotivation = styled.div`
     grid-area: motivation;
 `
 
-const SummaryImage = styled.div`    
-    border-radius: 4px;
+const SummaryImage = styled.div<{accentColorConfig: AccentColorConfig}>`        
     max-height: 300px;
+    border: 1px solid ${(props) => props.accentColorConfig.baseAccentColor};
+    box-shadow: 8px 8px 6px ${(props) => props.accentColorConfig.lightAccentColor};
     > div {
         position: unset !important;
-        overflow: hidden;
+        overflow: hidden;        
     }
 
     .image {
         object-fit: contain;
         width: 100% !important;
         position: relative !important;
-        height: unset !important;
+        height: unset !important;         
     }                                                 
 `
 

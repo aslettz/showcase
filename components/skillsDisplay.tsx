@@ -2,6 +2,7 @@ import styled from "styled-components";
 import ProficiencyItemGroup from "./proficiencyItemGroup";
 import {ExperienceSources} from "../pages/index";
 import {useState} from "react";
+import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
 
 export interface SkillsDisplayProps {
     selectedExperienceSource: ExperienceSources | null;
@@ -9,6 +10,7 @@ export interface SkillsDisplayProps {
 
 const SkillsDisplay = (props: SkillsDisplayProps) => {
     const [shouldHighlightSkills, setShouldHighlightSkills] = useState(true);
+    const accentColor = useAccentColor();
 
     function getHighlightSkills() {
         if (!shouldHighlightSkills) {
@@ -41,7 +43,7 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
                 <HighlightToggleContainer>
                     <HighlightToggleTitle>Highlight Skills</HighlightToggleTitle>
                     <>
-                        <HighlightToggle checked={shouldHighlightSkills} type={'checkbox'} id={'highlight-switch'} onClick={() => {setShouldHighlightSkills(!shouldHighlightSkills)}}/>
+                        <HighlightToggle accentColorConfig={accentColor} checked={shouldHighlightSkills} type={'checkbox'} id={'highlight-switch'} onChange={() => {setShouldHighlightSkills(!shouldHighlightSkills)}}/>
                         <HighlightLabel htmlFor={"highlight-switch"}>Highlight skills</HighlightLabel>
                     </>
                 </HighlightToggleContainer>
@@ -95,13 +97,13 @@ const Title = styled.h2`
 
 `
 
-const HighlightToggle = styled.input`
+const HighlightToggle = styled.input<{accentColorConfig: AccentColorConfig}>`
     height: 0;
     width: 0;
     visibility: hidden;
     
     :checked + label {
-        background: #bada55;
+        background: ${(props) => props.accentColorConfig.baseAccentColor};
     }
     
     :checked + label:after {
@@ -129,7 +131,7 @@ const HighlightLabel = styled.label`
     text-indent: -9999px;
     width: 36px;
     height: 24px;
-    background: grey;
+    background: #CFCFCF;
     display: block;
     border-radius: 100px;
     position: relative;
