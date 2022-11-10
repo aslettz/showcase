@@ -58,7 +58,7 @@ const Label = styled.label`
     text-indent: -9999px;
     width: 36px;
     height: 24px;
-    background: #CFCFCF;
+    background: #ABABAB;
     display: block;
     border-radius: 100px;
     position: relative;

@@ -22,7 +22,6 @@ const Header = (props: HeaderProps) => {
         if (isConnected)
             return (
                 <div>
-                    Connected to {address}
                     <button onClick={() => disconnect()}>Disconnect</button>
                 </div>
             )
