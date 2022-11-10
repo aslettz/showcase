@@ -6,6 +6,9 @@ import styled from "styled-components";
 import useAccentColor from "../hooks/useAccentColor";
 import Header from "../components/header";
 import AboutMe from "../components/AboutMe";
+import {useAccount, useConnect, useDisconnect} from "wagmi";
+import {InjectedConnector} from "@wagmi/core";
+import Link from "next/link";
 
 export enum ExperienceSources {
     Awardco,
@@ -16,12 +19,16 @@ export enum ExperienceSources {
 }
 
 const Home: NextPage = () => {
-    const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources>(ExperienceSources.Awardco)
-    const accentColor = useAccentColor();
+    const { address, isConnected } = useAccount()
+
+    const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources>(ExperienceSources.Awardco);
+    const [shouldUseNftColors, setShouldUseNftColors] = useState(true);
+
+
 
     return (
         <>
-            <Header/>
+            <Header shouldUseNftColors={shouldUseNftColors} toggleShouldUseNftColors={() => setShouldUseNftColors(!shouldUseNftColors)}/>
             <IndexPageContainer>
                 <MainContentGrid>
                     <GridAboutMe>
