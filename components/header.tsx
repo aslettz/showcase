@@ -3,7 +3,6 @@ import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
 import ToggleSwitch from "./toggleSwitch";
 import {useAccount, useConnect, useDisconnect} from "wagmi";
 import {InjectedConnector} from "@wagmi/core";
-import Link from "next/link";
 import ZButton from "./zButton";
 
 export interface HeaderProps {

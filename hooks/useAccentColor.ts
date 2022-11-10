@@ -1,3 +1,5 @@
+import {useAccount} from "wagmi";
+import {Dispatch, SetStateAction, useState} from "react";
 
 export interface AccentColorConfig {
     baseAccentColor: string;
@@ -6,13 +8,26 @@ export interface AccentColorConfig {
 }
 
 const useAccentColor = () : AccentColorConfig => {
-    const colorConfig: AccentColorConfig = {
-        baseAccentColor: '#FF551B',
-        mediumAccentColor: '#FF551B77',
-        lightAccentColor: '#FF551B22',
+    const { address, isConnected } = useAccount();
+    const shouldUseNftColor = true;
+
+    const mediumOpacity = "77";
+    const heavyOpacity = "22";
+
+    if (isConnected && shouldUseNftColor) {
+        return {
+            baseAccentColor: '#7D9A3D',
+            mediumAccentColor: '#7D9A3D' + mediumOpacity,
+            lightAccentColor: '#7D9A3D' + heavyOpacity,
+        }
     }
 
-    return colorConfig;
+    return {
+        baseAccentColor: '#FF551B',
+        mediumAccentColor: '#FF551B' + mediumOpacity,
+        lightAccentColor: '#FF551B22' + heavyOpacity,
+    }
+
 }
 
 export default useAccentColor;
