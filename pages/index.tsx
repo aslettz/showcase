@@ -5,6 +5,7 @@ import Header from "../components/header";
 import {useState} from "react";
 import AboutMe from "../components/AboutMe";
 import styled from "styled-components";
+import useAccentColor from "../hooks/useAccentColor";
 
 export enum ExperienceSources {
     Awardco,
@@ -16,6 +17,7 @@ export enum ExperienceSources {
 
 const Home: NextPage = () => {
     const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources>(ExperienceSources.Awardco)
+    const accentColor = useAccentColor();
 
     return (
         <>

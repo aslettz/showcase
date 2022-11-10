@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
 
 export interface HeaderProps {
 
 }
 
 const Header = (props: HeaderProps) => {
+    const accentColor = useAccentColor();
 
     return (
-        <HeroBanner>
+        <HeroBanner accentColorConfig={accentColor}>
             <HeaderTitle>
                 Zan Aslett
             </HeaderTitle>
@@ -19,7 +21,7 @@ const Header = (props: HeaderProps) => {
 
 export default Header;
 
-const HeroBanner = styled.div`
+const HeroBanner = styled.div<{accentColorConfig: AccentColorConfig}>`
     width: 100%;
     box-sizing: border-box;    
     display: flex;
@@ -29,7 +31,8 @@ const HeroBanner = styled.div`
     background-size: 64px auto; 
     margin-bottom: 24px;     
     padding: 8px 0;
-    background-color: #9c9c9c;      
+    background-color: #CFCFCF;
+    border-bottom: 1px solid ${(props) => props.accentColorConfig.baseAccentColor}      
 `;
 
 const HeaderTitle = styled.h1`

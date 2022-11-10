@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {ExperienceSources} from "../pages";
+import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
 
 export interface ExperienceChartProps {
     selectedExperienceSource: ExperienceSources | null;
@@ -7,6 +8,7 @@ export interface ExperienceChartProps {
 }
 
 const ExperienceChart = (props: ExperienceChartProps) => {
+    const accentColorConfig = useAccentColor();
 
     function renderSideProjectExperience() {
         return (
@@ -108,19 +110,19 @@ const ExperienceChart = (props: ExperienceChartProps) => {
     function renderSourceSelection() {
         return (
         <SourceSelection>
-            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.Awardco)} isSelected={props.selectedExperienceSource==ExperienceSources.Awardco}>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.Awardco)} isSelected={props.selectedExperienceSource==ExperienceSources.Awardco}>
                 Awardco
             </SourceItem>
-            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.Contract)} isSelected={props.selectedExperienceSource==ExperienceSources.Contract}>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.Contract)} isSelected={props.selectedExperienceSource==ExperienceSources.Contract}>
                 Contract Work
             </SourceItem>
-            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.RedSky)} isSelected={props.selectedExperienceSource==ExperienceSources.RedSky}>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.RedSky)} isSelected={props.selectedExperienceSource==ExperienceSources.RedSky}>
                 RedSky Tech.
             </SourceItem>
-            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.BYU)} isSelected={props.selectedExperienceSource==ExperienceSources.BYU}>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.BYU)} isSelected={props.selectedExperienceSource==ExperienceSources.BYU}>
                 BYU
             </SourceItem>
-            <SourceItem onClick={() => props.onSelectionChange(ExperienceSources.SideProjects)} isSelected={props.selectedExperienceSource==ExperienceSources.SideProjects}>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.SideProjects)} isSelected={props.selectedExperienceSource==ExperienceSources.SideProjects}>
                 Side Projects
             </SourceItem>
         </SourceSelection>);
@@ -167,12 +169,12 @@ const SourceSelection = styled.ul`
     }       
 `;
 
-const SourceItem = styled.li<{ isSelected: boolean }>`
+const SourceItem = styled.li<{ isSelected: boolean, accentColorConfig: AccentColorConfig }>`
     padding: 4px;
     margin: 4px;
     border-radius: 4px;
-    background-color: ${(props) => {return (props.isSelected ? '#9C9C9C55' : '#FFFFFF')}};
-    box-shadow: ${(props) => {return (props.isSelected ? '3px 3px 1px' : 'none')}};
+    background-color: ${(props) => {return (props.isSelected ? props.accentColorConfig.mediumAccentColor : '#FFFFFF')}};
+    box-shadow: ${(props) => {return (props.isSelected ? `3px 3px 6px ${props.accentColorConfig.baseAccentColor}` : 'none')}};
     cursor: pointer;
 `;
 
@@ -189,6 +191,5 @@ const ExperienceList = styled.ul`
 `;
 
 const ExperienceListItem = styled.li`
-    font-size: 1.5rem;
     padding: 4px;
 `;
