@@ -3,6 +3,7 @@ import ProficiencyItemGroup from "./proficiencyItemGroup";
 import {ExperienceSources} from "../pages/index";
 import {useState} from "react";
 import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
+import ToggleSwitch from "./toggleSwitch";
 
 export interface SkillsDisplayProps {
     selectedExperienceSource: ExperienceSources | null;
@@ -39,14 +40,7 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
 
             <TitleAndToggleContainer>
                 <Title>Proficiencies</Title>
-
-                <HighlightToggleContainer>
-                    <HighlightToggleTitle>Highlight Skills</HighlightToggleTitle>
-                    <>
-                        <HighlightToggle accentColorConfig={accentColor} checked={shouldHighlightSkills} type={'checkbox'} id={'highlight-switch'} onChange={() => {setShouldHighlightSkills(!shouldHighlightSkills)}}/>
-                        <HighlightLabel htmlFor={"highlight-switch"}>Highlight skills</HighlightLabel>
-                    </>
-                </HighlightToggleContainer>
+                <ToggleSwitch isChecked={shouldHighlightSkills} onToggle={() => {setShouldHighlightSkills(!shouldHighlightSkills)}} title={"Highlight Skills"}/>
             </TitleAndToggleContainer>
 
             <ProficiencySection>

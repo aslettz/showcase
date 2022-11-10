@@ -9,7 +9,6 @@ export interface AboutMeProps {
 const AboutMe = (props: AboutMeProps) => {
     const accentColorConfig = useAccentColor();
 
-
     return (
         <AboutMeBlock>
             <AboutMeContent>
