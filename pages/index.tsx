@@ -5,6 +5,7 @@ import {useState} from "react";
 import styled from "styled-components";
 import Header from "../components/header";
 import AboutMe from "../components/AboutMe";
+import useAppConfig from "../hooks/useAppConfig";
 
 export enum ExperienceSources {
     Awardco,
@@ -16,11 +17,11 @@ export enum ExperienceSources {
 
 const Home: NextPage = () => {
     const [selectedExperienceSource, setSelectedExperienceSource] = useState<ExperienceSources>(ExperienceSources.Awardco);
-    const [shouldUseNftColors, setShouldUseNftColors] = useState(true);
+    const {useNftColor, toggleUseNftColor} = useAppConfig();
 
     return (
         <>
-            <Header shouldUseNftColors={shouldUseNftColors} toggleShouldUseNftColors={() => setShouldUseNftColors(!shouldUseNftColors)}/>
+            <Header shouldUseNftColors={useNftColor} toggleShouldUseNftColors={toggleUseNftColor}/>
             <IndexPageContainer>
                 <MainContentGrid>
                     <GridAboutMe>

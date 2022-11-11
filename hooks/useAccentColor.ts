@@ -1,5 +1,7 @@
 import {useAccount} from "wagmi";
-import {Dispatch, SetStateAction, useState} from "react";
+import useAppConfig from "./useAppConfig";
+import {useReactiveVar} from "@apollo/client";
+import appConfigVar from "../appConfigVar";
 
 export interface AccentColorConfig {
     baseAccentColor: string;
@@ -9,12 +11,12 @@ export interface AccentColorConfig {
 
 const useAccentColor = () : AccentColorConfig => {
     const { address, isConnected } = useAccount();
-    const shouldUseNftColor = true;
+    const { useNftColor } = useReactiveVar(appConfigVar);
 
     const mediumOpacity = "77";
     const heavyOpacity = "22";
 
-    if (isConnected && shouldUseNftColor) {
+    if (isConnected && useNftColor) {
         return {
             baseAccentColor: '#7D9A3D',
             mediumAccentColor: '#7D9A3D' + mediumOpacity,

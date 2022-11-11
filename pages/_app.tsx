@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import { WagmiConfig, createClient } from 'wagmi'
 import { getDefaultProvider } from 'ethers'
 import Head from "next/head";
+import client from '../apolloClient';
+import {ApolloProvider} from "@apollo/client";
 
 const web3Client = createClient({
   autoConnect: false,
@@ -18,7 +20,9 @@ function MyApp({ Component, pageProps }: AppProps) {
               <link rel="icon" href="/aslettco.png"/>
               <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
           </Head>
-          <Component {...pageProps} />
+          <ApolloProvider client={client}>
+                <Component {...pageProps} />
+          </ApolloProvider>
       </WagmiConfig>
   )
 }
