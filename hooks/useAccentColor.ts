@@ -1,7 +1,6 @@
 import {useAccount} from "wagmi";
-import useAppConfig from "./useAppConfig";
 import {useReactiveVar} from "@apollo/client";
-import appConfigVar from "../appConfigVar";
+import appConfigVar from "../globalState";
 
 export interface AccentColorConfig {
     baseAccentColor: string;

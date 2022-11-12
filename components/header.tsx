@@ -4,10 +4,14 @@ import ToggleSwitch from "./toggleSwitch";
 import {useAccount, useConnect, useDisconnect} from "wagmi";
 import {InjectedConnector} from "@wagmi/core";
 import ZButton from "./zButton";
+import {useReactiveVar} from "@apollo/client";
+import appConfigVar, {AppConfig} from "../globalState";
+// import appConfigVar from "../appConfigVar";
+// import AppConfig from "../appConfig";
 
 export interface HeaderProps {
-    shouldUseNftColors: boolean;
-    toggleShouldUseNftColors: () => void;
+    // shouldUseNftColors: boolean;
+    // toggleShouldUseNftColors: () => void;
 }
 
 const Header = (props: HeaderProps) => {
@@ -17,6 +21,7 @@ const Header = (props: HeaderProps) => {
     });
     const { disconnect } = useDisconnect();
     const accentColor = useAccentColor();
+    const appConfig  = useReactiveVar<AppConfig>(appConfigVar);
 
     function renderWeb3Button() {
         if (isConnected)
@@ -56,7 +61,7 @@ const Header = (props: HeaderProps) => {
             </CenterContent>
             <RightContent>
                 {isConnected &&
-                    <ToggleSwitch isChecked={props.shouldUseNftColors} onToggle={props.toggleShouldUseNftColors}
+                    <ToggleSwitch isChecked={appConfig.useNftColor} onToggle={() => appConfigVar({useNftColor: !appConfig.useNftColor})}
                                title={"Use NFT Colors"}/>
                 }
             </RightContent>
