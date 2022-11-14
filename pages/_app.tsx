@@ -1,14 +1,17 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { WagmiConfig, createClient } from 'wagmi'
+import {WagmiConfig, createClient, configureChains, chain} from 'wagmi'
 import { getDefaultProvider } from 'ethers'
 import Head from "next/head";
 import client from '../apolloClient';
 import {ApolloProvider} from "@apollo/client";
+import {publicProvider} from "wagmi/providers/public";
+
+const { chains, provider } = configureChains([chain.polygon, chain.polygonMumbai], [publicProvider()]);
 
 const web3Client = createClient({
   autoConnect: false,
-  provider: getDefaultProvider(),
+  provider
 })
 
 function MyApp({ Component, pageProps }: AppProps) {

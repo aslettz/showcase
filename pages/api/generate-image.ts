@@ -9,7 +9,7 @@ import {ethers} from "ethers";
 import contractJson from "../../AslettcoToken.json";
 
 dotenv.config();
-const { ALCHEMY_API_KEY , CRYPTO_PRIVATE_KEY, NFT_STORAGE_API_KEY } = process.env;
+const { ALCHEMY_API_KEY , CRYPTO_PRIVATE_KEY, NFT_STORAGE_API_KEY, ACT_CONTRACT_ADDRESS } = process.env;
 
 const settings = {
   apiKey: ALCHEMY_API_KEY as string,
@@ -18,7 +18,7 @@ const settings = {
 
 const alchemy = new Alchemy(settings);
 let wallet = new Wallet(CRYPTO_PRIVATE_KEY as string, alchemy);
-const contract = new ethers.Contract("0xa928F1fEDDe1ee0B545b511404441f035f98BE33", contractJson.abi, wallet);
+const contractBackend = new ethers.Contract(ACT_CONTRACT_ADDRESS as string, contractJson.abi, wallet);
 const nftstorage = new NFTStorage({ token: NFT_STORAGE_API_KEY as string })
 
 export default async function handler(
@@ -84,5 +84,5 @@ async function uploadImage(address: string, colorHexCode: string, image: Buffer)
 }
 
 async function mintToken(address: string, url: string) {
-  await contract.safeMint(address, url);
+  await contractBackend.safeMint(address, url);
 }
