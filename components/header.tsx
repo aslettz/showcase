@@ -42,7 +42,7 @@ const Header = (props: HeaderProps) => {
             window.open(url, '_blank', 'noopener,noreferrer');
         };
 
-        return <ZButton text={"Generate NFT Art"} onClick={() => openInNewTab('/api/generate-image?address=${address}')}/>
+        return <ZButton text={"Generate NFT Art"} onClick={() => openInNewTab(`/api/generate-image?address=${address}`)}/>
     }
 
     return (
