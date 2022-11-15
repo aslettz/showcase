@@ -27,7 +27,14 @@ const AboutMe = (props: AboutMeProps) => {
                         {/* eslint-disable-next-line react/no-unescaped-entities */}
                         I'm a software engineer with a drive for innovation and the cutting edge.
                         In the fast moving world of decentralization, I pride myself in the ability
-                        to learn new technologies and skills quickly.
+                        to learn new technologies and skills quickly. I graduated <em>Magna Cum Laude</em> from
+                        Brigham Young University in April 2022 with a dual major in applied physics
+                        and computer science.
+                        <br/><br/>
+                        My wife, Marli, and I have been married since February 2022. We live together
+                        in Orem, UT while she attends her final year at Utah Valley University. We enjoy
+                        trying and making new foods together, scenic drives through the nearby canyons,
+                        and watching our favorite movies.
                     </SummaryText>
                 </GridSummary>
                 <GridMotivation>
