@@ -11,7 +11,6 @@ export interface SkillsDisplayProps {
 
 const SkillsDisplay = (props: SkillsDisplayProps) => {
     const [shouldHighlightSkills, setShouldHighlightSkills] = useState(true);
-    const accentColor = useAccentColor();
 
     function getHighlightSkills() {
         if (!shouldHighlightSkills) {
@@ -26,7 +25,8 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
             case ExperienceSources.RedSky:
                 return ["Typescript/Javascript", "git", "Solidity", "Smart Contract Testing and Security", "React", "Alchemy", "Hardhat", "Mocha (Unit Tests)", "MariaDB", "ethers.js", "web3.js"];
             case ExperienceSources.BYU:
-                return ["git", "Software Engineering Design Patterns", "Solidity", "Agile Development", "Smart Contract Testing and Security"];
+                return ["git", "Software Engineering Design Patterns", "Solidity", "Agile Development", "Smart" +
+                " Contract Testing and Security", "Python"];
             case ExperienceSources.SideProjects:
                 return ["git", "Solidity", "Styled-Components", "next.js", "Vercel", "React", "Hardhat", "Foundry" +
                 " (Forge/Anvil)", "ERC Token Standards", "ethers.js", "web3.js", "Remix"];
@@ -55,7 +55,7 @@ const SkillsDisplay = (props: SkillsDisplayProps) => {
                 <ProficiencyTitle>Experienced (2+ Projects)</ProficiencyTitle>
                 <ProficiencyItemGroup highlightedSkills={getHighlightSkills()} groupSkills={
                     ['Foundry (Forge/Anvil)', 'Remix', 'ERC Token Standards', 'React', 'Hardhat', 'Mocha (Unit' +
-                    ' Tests)', 'Agile Development', 'MS SQL Server', 'MariaDB']
+                    ' Tests)', 'Agile Development', 'MS SQL Server', 'MariaDB', "Python"]
                 }/>
             </ProficiencySection>
 
