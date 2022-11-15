@@ -8,24 +8,22 @@ import dotenv from "dotenv";
 import {ethers} from "ethers";
 import contractJson from "../../AslettcoToken.json";
 
-dotenv.config();
-const { ALCHEMY_API_KEY , CRYPTO_PRIVATE_KEY, NFT_STORAGE_API_KEY, ACT_CONTRACT_ADDRESS } = process.env;
+// dotenv.config();
 
 const settings = {
-  apiKey: ALCHEMY_API_KEY as string,
+  apiKey: process.env.ALCHEMY_API_KEY as string,
   network: Network.MATIC_MUMBAI,
 };
 
 const alchemy = new Alchemy(settings);
-let wallet = new Wallet(CRYPTO_PRIVATE_KEY as string, alchemy);
-const contractBackend = new ethers.Contract(ACT_CONTRACT_ADDRESS as string, contractJson.abi, wallet);
-const nftstorage = new NFTStorage({ token: NFT_STORAGE_API_KEY as string })
+let wallet = new Wallet(process.env.CRYPTO_PRIVATE_KEY as string, alchemy);
+const contractBackend = new ethers.Contract(process.env.ACT_CONTRACT_ADDRESS as string, contractJson.abi, wallet);
+const nftstorage = new NFTStorage({ token: process.env.NFT_STORAGE_API_KEY as string })
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
-  console.log("ACT_CONTRACT_ADDRESS: ", ACT_CONTRACT_ADDRESS); //Z-Test
 
   let address = req.query["address"] as string;
   if (address == undefined || address == null || address.length < 42) {
