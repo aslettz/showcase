@@ -80,6 +80,7 @@ const Header = (props: HeaderProps) => {
                     Generates a unique version (color) of my logo based on your
                     crypto address. This uniquely colored logo is airdropped to
                     your connected polygon-mumbai address and used to customize
+                    {/* eslint-disable-next-line react/no-unescaped-entities */}
                     the accent color of this page. Don't like your random color?
                     You can always revert back to the default color later.
                 </PopupContent>
