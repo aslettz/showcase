@@ -25,6 +25,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
+  console.log("ACT_CONTRACT_ADDRESS: ", ACT_CONTRACT_ADDRESS); //Z-Test
 
   let address = req.query["address"] as string;
   if (address == undefined || address == null || address.length < 42) {

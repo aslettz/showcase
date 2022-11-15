@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ProficiencyItemGroup from "./proficiencyItemGroup";
 import {ExperienceSources} from "../pages/index";
 import {useState} from "react";
-import useAccentColor, {AccentColorConfig} from "../hooks/useAccentColor";
+import {AccentColorConfig} from "../hooks/useAccentColor";
 import ToggleSwitch from "./toggleSwitch";
 
 export interface SkillsDisplayProps {
