@@ -7,6 +7,7 @@ import ZButton from "./zButton";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar, {AppConfig} from "../globalState";
 import useHasNft from "../hooks/useHasNft";
+import Popup from "reactjs-popup";
 
 export interface HeaderProps {
 
@@ -25,11 +26,16 @@ const Header = (props: HeaderProps) => {
     function renderWeb3Button() {
         if (isConnected)
             return (
-                <div>
+                <DisconnectContainer>
                     <ZButton text={"Disconnect"} onClick={() => disconnect()}/>
-                </div>
+                </DisconnectContainer>
             )
-        return <ZButton text={"Connect Wallet"} onClick={() => connect()}/>
+        return (
+        <ItemWithTooltipPopup>
+            <ZButton text={"Connect Wallet"} onClick={() => connect()}/>
+            {renderConnectButtonPopup()}
+        </ItemWithTooltipPopup>
+        )
     }
 
     function renderGenerateNftButton() {
@@ -41,7 +47,43 @@ const Header = (props: HeaderProps) => {
             window.open(url, '_blank', 'noopener,noreferrer');
         };
 
-        return <ZButton text={"Generate NFT Art"} onClick={() => openInNewTab(`/api/generate-image?address=${address}`)}/>
+        return (
+            <ItemWithTooltipPopup>
+                <ZButton
+                    text={"Generate NFT Art"}
+                    onClick={() => openInNewTab(`/api/generate-image?address=${address}`)}
+                />
+                {renderGenerateNFTPopup()}
+            </ItemWithTooltipPopup>)
+    }
+
+    function renderConnectButtonPopup() {
+        return (
+            <StyledPopup trigger={<PopupTrigger>?</PopupTrigger>} modal>
+               <PopupContent>
+                   Connect your wallet via the&nbsp;
+                   {<a href={"https://chainlist.org/chain/80001"}>
+                       polygon mumbai testnet
+                   </a>}
+                   &nbsp;to get a free airdropped NFT that enables some unique
+                   features on this site!
+               </PopupContent>
+            </StyledPopup>
+        )
+    }
+
+    function renderGenerateNFTPopup() {
+        return (
+            <StyledPopup trigger={<PopupTrigger>?</PopupTrigger>} modal>
+                <PopupContent>
+                    Generates a unique version (color) of my logo based on your
+                    crypto address. This uniquely colored logo is airdropped to
+                    your connected polygon-mumbai address and used to customize
+                    the accent color of this page. Don't like your random color?
+                    You can always revert back to the default color later.
+                </PopupContent>
+            </StyledPopup>
+        )
     }
 
     return (
@@ -99,6 +141,10 @@ const LeftContent = styled.div`
     flex-direction: column;
 `;
 
+const DisconnectContainer = styled.div`
+    margin-bottom: 8px;
+`;
+
 const CenterContent = styled.div<{backgroundImageSource: string}>`
     display: flex;
     flex-direction: column;
@@ -111,4 +157,41 @@ const CenterContent = styled.div<{backgroundImageSource: string}>`
 
 const RightContent = styled.div`
 
+`;
+
+const ItemWithTooltipPopup = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const StyledPopup = styled(Popup)`
+    &-overlay {
+        backdrop-filter: blur(5px);
+    }
+    
+    &-content {
+        background: white;
+        border: 1px solid black;
+        border-radius: 8px;
+        min-height: 40px;
+        padding: 16px;
+        max-width: 80%;
+    }    
+`;
+
+const PopupContent = styled.div`
+    font-size: 32px;  
+`;
+
+const PopupTrigger = styled.h3`
+    border: 1px solid black;
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    margin: 4px;
+    cursor: pointer;
 `;

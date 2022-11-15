@@ -16,8 +16,7 @@ const ZButton = (props: ZButtonProps) => {
 
 export default ZButton;
 
-const ZButtonStyled = styled.button<{ accentColorConfig: AccentColorConfig }>`
-    margin-bottom: 8px;
+const ZButtonStyled = styled.button<{ accentColorConfig: AccentColorConfig }>`    
     background-color: ${(props) => props.accentColorConfig.mediumAccentColor};
     border-radius: 100px;
     box-shadow: ${(props) => props.accentColorConfig.lightAccentColor} 0 -25px 18px -14px inset,${(props) => props.accentColorConfig.lightAccentColor} 0 1px 2px,${(props) => props.accentColorConfig.lightAccentColor} 0 2px 4px,${(props) => props.accentColorConfig.lightAccentColor} 0 4px 8px,${(props) => props.accentColorConfig.lightAccentColor} 0 8px 16px,${(props) => props.accentColorConfig.lightAccentColor} 0 16px 32px;    
