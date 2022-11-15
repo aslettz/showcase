@@ -7,6 +7,7 @@ import ZButton from "./zButton";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar, {AppConfig} from "../globalState";
 import useHasNft from "../hooks/useHasNft";
+// @ts-ignore
 import Popup from "reactjs-popup";
 
 export interface HeaderProps {
@@ -23,7 +24,6 @@ const Header = (props: HeaderProps) => {
     const accentColor = useAccentColor();
     const appConfig  = useReactiveVar<AppConfig>(appConfigVar);
     const hasNft = useHasNft();
-
     function renderWeb3Button() {
         if (isConnected)
             return (
