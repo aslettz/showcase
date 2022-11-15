@@ -76,6 +76,7 @@ const HeroBanner = styled.div<{accentColorConfig: AccentColorConfig}>`
     width: 100%;
     box-sizing: border-box;    
     display: flex;    
+    flex-wrap: wrap;
     align-items: center;     
     justify-content: space-around;  
     margin-bottom: 24px;     
@@ -105,6 +106,7 @@ const CenterContent = styled.div<{backgroundImageSource: string}>`
     background: url(${(props) => props.backgroundImageSource}) no-repeat center;
     background-size: 64px auto; 
     transition: all 250ms;
+    padding: 8px;
 `;
 
 const RightContent = styled.div`
