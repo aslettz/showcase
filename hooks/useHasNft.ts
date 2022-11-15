@@ -6,7 +6,7 @@ const useHasNft = () => {
 
     const {data, isError} = useContractRead({
         abi: contractJson.abi,
-        address: "0xD7032E28FE313870329977a2c80E708DbA818165",
+        address: "0x6759ab6647A0D2aa471b4D7Ac512D0637cC16ECF",
         functionName: "balanceOf",
         args: [address],
     })
