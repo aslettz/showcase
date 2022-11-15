@@ -17,6 +17,7 @@ const Header = (props: HeaderProps) => {
     const { address, isConnected } = useAccount()
     const { connect } = useConnect({
         connector: new InjectedConnector(),
+        chainId: 80001
     });
     const { disconnect } = useDisconnect();
     const accentColor = useAccentColor();

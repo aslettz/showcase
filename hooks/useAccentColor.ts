@@ -1,10 +1,6 @@
-import {chain, useAccount, useContract, useContractRead, useContractReads} from "wagmi";
+import { useAccount } from "wagmi";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar from "../globalState";
-import contractJson from "../AslettcoToken.json";
-import axios from "axios";
-import {useState} from "react";
-import useHasNft from "./useHasNft";
 import useGetNftColor from "./useGetNftColor";
 
 export interface AccentColorConfig {
