@@ -36,6 +36,12 @@ const ExperienceChart = (props: ExperienceChartProps) => {
                     <ExperienceListItem>
                         Graduated <em>Magna Cum Laude</em> in Applied Physics and Computer Science
                     </ExperienceListItem>
+                    <ExperienceListItem>
+                        Completed an Applied Physics emphasis in quantum computing
+                    </ExperienceListItem>
+                    <ExperienceListItem>
+                        Research assistant in the plasma physics group for three years
+                    </ExperienceListItem>
                 </ExperienceList>
             </ExperienceContainer>)
     }
@@ -119,11 +125,11 @@ const ExperienceChart = (props: ExperienceChartProps) => {
             <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.RedSky)} isSelected={props.selectedExperienceSource==ExperienceSources.RedSky}>
                 RedSky Tech.
             </SourceItem>
-            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.BYU)} isSelected={props.selectedExperienceSource==ExperienceSources.BYU}>
-                BYU
-            </SourceItem>
             <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.SideProjects)} isSelected={props.selectedExperienceSource==ExperienceSources.SideProjects}>
                 Side Projects
+            </SourceItem>
+            <SourceItem accentColorConfig={accentColorConfig} onClick={() => props.onSelectionChange(ExperienceSources.BYU)} isSelected={props.selectedExperienceSource==ExperienceSources.BYU}>
+                BYU
             </SourceItem>
         </SourceSelection>);
     }
