@@ -1,7 +1,6 @@
-import {chain, useAccount, useContract, useContractRead} from "wagmi";
+import {chain, useAccount, useContract, useContractRead, useContractReads} from "wagmi";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar from "../globalState";
-import {ethers, getDefaultProvider} from "ethers";
 import contractJson from "../AslettcoToken.json";
 import axios from "axios";
 import {useState} from "react";
@@ -16,11 +15,21 @@ const useAccentColor = () : AccentColorConfig => {
     const { address, isConnected } = useAccount();
     const { useNftColor } = useReactiveVar(appConfigVar);
     const [nftColor, setNftColor] = useState();
-    const {data, isError} = useContractRead({
-        abi: contractJson.abi,
-        address: "0xD7032E28FE313870329977a2c80E708DbA818165",
-        functionName: "getTokenUriByAddress",
-        args: [isConnected ? address : "0xD7032E28FE313870329977a2c80E708DbA818165"],
+    const {data, isError} = useContractReads({
+        contracts: [
+            {
+                abi: contractJson.abi,
+                address: "0xD7032E28FE313870329977a2c80E708DbA818165",
+                functionName: "balanceOf",
+                args: [address],
+            },
+            {
+                abi: contractJson.abi,
+                address: "0xD7032E28FE313870329977a2c80E708DbA818165",
+                functionName: "getTokenUriByAddress",
+                args: [address],
+            }
+        ]
     });
 
     const mediumOpacity = "77";
@@ -31,9 +40,9 @@ const useAccentColor = () : AccentColorConfig => {
         setNftColor(response.data.properties.color);
     }
 
-    if (isConnected && useNftColor && !isError) {
+    if (isConnected && useNftColor && data && !isError && data[0] != 0) {
         if (!nftColor) {
-            const metadataUrl = (data as string).replace("ipfs://", "https://nftstorage.link/ipfs/");
+            const metadataUrl = (data[1] as string).replace("ipfs://", "https://nftstorage.link/ipfs/");
             readAndSetNftColor(metadataUrl);
         }
         else {

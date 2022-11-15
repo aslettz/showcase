@@ -6,8 +6,6 @@ import {InjectedConnector} from "@wagmi/core";
 import ZButton from "./zButton";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar, {AppConfig} from "../globalState";
-// import appConfigVar from "../appConfigVar";
-// import AppConfig from "../appConfig";
 
 export interface HeaderProps {
     // shouldUseNftColors: boolean;
