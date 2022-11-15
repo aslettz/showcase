@@ -7,8 +7,7 @@ import ZButton from "./zButton";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar, {AppConfig} from "../globalState";
 import useHasNft from "../hooks/useHasNft";
-// @ts-ignore
-import Popup from "reactjs-popup";
+import Popup from 'reactjs-popup';
 
 export interface HeaderProps {
 

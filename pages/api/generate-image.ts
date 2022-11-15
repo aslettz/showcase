@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 import sharp from 'sharp';
 import Color from 'color';
-// @ts-ignore
 import { NFTStorage, File } from 'nft.storage';
 import {Network, Alchemy, Wallet} from "alchemy-sdk";
 import dotenv from "dotenv";
