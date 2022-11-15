@@ -62,6 +62,7 @@ const Label = styled.label`
     display: block;
     border-radius: 100px;
     position: relative;
+    transition: all 250ms;
     
     :after {
         content: '';

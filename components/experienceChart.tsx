@@ -176,6 +176,7 @@ const SourceItem = styled.li<{ isSelected: boolean, accentColorConfig: AccentCol
     background-color: ${(props) => {return (props.isSelected ? props.accentColorConfig.mediumAccentColor : '#FFFFFF')}};
     box-shadow: ${(props) => {return (props.isSelected ? `3px 3px 6px ${props.accentColorConfig.baseAccentColor}` : 'none')}};
     cursor: pointer;
+    transition: all 250ms;
 `;
 
 const ExperienceContainer = styled.div`

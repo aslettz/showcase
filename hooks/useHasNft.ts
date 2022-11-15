@@ -11,7 +11,7 @@ const useHasNft = () => {
         args: [address],
     })
 
-    return (data != 0);
+    return isConnected && (data != 0);
 }
 
 export default useHasNft;

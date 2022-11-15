@@ -8,6 +8,7 @@ const ProficiencyItemContainer = styled.div<{isHighlighted: boolean, accentColor
     margin: 4px;
     background-color: ${(props) => {return (props.isHighlighted ? props.accentColorConfig.mediumAccentColor : '#FFFFFF')}};
     box-shadow: ${(props) => {return (props.isHighlighted ? `3px 3px 6px ${props.accentColorConfig.baseAccentColor}` : 'none')}};
+    transition: all 250ms;
 `;
 
 export interface ProficiencyItemProps {

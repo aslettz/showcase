@@ -104,6 +104,7 @@ const CenterContent = styled.div<{backgroundImageSource: string}>`
     align-items: center;
     background: url(${(props) => props.backgroundImageSource}) no-repeat center;
     background-size: 64px auto; 
+    transition: all 250ms;
 `;
 
 const RightContent = styled.div`
