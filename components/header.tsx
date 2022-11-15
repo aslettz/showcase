@@ -6,10 +6,10 @@ import {InjectedConnector} from "@wagmi/core";
 import ZButton from "./zButton";
 import {useReactiveVar} from "@apollo/client";
 import appConfigVar, {AppConfig} from "../globalState";
+import useHasNft from "../hooks/useHasNft";
 
 export interface HeaderProps {
-    // shouldUseNftColors: boolean;
-    // toggleShouldUseNftColors: () => void;
+
 }
 
 const Header = (props: HeaderProps) => {
@@ -20,6 +20,7 @@ const Header = (props: HeaderProps) => {
     const { disconnect } = useDisconnect();
     const accentColor = useAccentColor();
     const appConfig  = useReactiveVar<AppConfig>(appConfigVar);
+    const hasNft = useHasNft();
 
     function renderWeb3Button() {
         if (isConnected)
@@ -32,7 +33,7 @@ const Header = (props: HeaderProps) => {
     }
 
     function renderGenerateNftButton() {
-        if (!isConnected) {
+        if (!isConnected || hasNft) {
             return;
         }
 
@@ -49,7 +50,7 @@ const Header = (props: HeaderProps) => {
                 {renderWeb3Button()}
                 {renderGenerateNftButton()}
             </LeftContent>
-            <CenterContent>
+            <CenterContent backgroundImageSource={(hasNft && appConfig.useNftColor) ? appConfig.nftImageUrl : '/aslettco-transparent.png'}>
                 <HeaderTitle>
                     Zan Aslett
                 </HeaderTitle>
@@ -58,9 +59,12 @@ const Header = (props: HeaderProps) => {
                 </HeaderSubtitle>
             </CenterContent>
             <RightContent>
-                {isConnected &&
-                    <ToggleSwitch isChecked={appConfig.useNftColor} onToggle={() => appConfigVar({useNftColor: !appConfig.useNftColor})}
-                               title={"Use NFT Colors"}/>
+                {isConnected && hasNft &&
+                    <ToggleSwitch
+                        isChecked={appConfig.useNftColor}
+                        onToggle={() => appConfigVar({...appConfig, useNftColor: !appConfig.useNftColor})}
+                        title={"Use NFT Colors"}
+                    />
                 }
             </RightContent>
         </HeroBanner>)
@@ -74,8 +78,6 @@ const HeroBanner = styled.div<{accentColorConfig: AccentColorConfig}>`
     display: flex;    
     align-items: center;     
     justify-content: space-around;  
-    background: url('/aslettco-transparent.png') no-repeat center;
-    background-size: 64px auto; 
     margin-bottom: 24px;     
     padding: 8px 0;
     background-color: #CFCFCF;
@@ -96,10 +98,12 @@ const LeftContent = styled.div`
     flex-direction: column;
 `;
 
-const CenterContent = styled.div`
+const CenterContent = styled.div<{backgroundImageSource: string}>`
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: url(${(props) => props.backgroundImageSource}) no-repeat center;
+    background-size: 64px auto; 
 `;
 
 const RightContent = styled.div`
