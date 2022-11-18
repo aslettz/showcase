@@ -16,13 +16,30 @@ const ExperienceChart = (props: ExperienceChartProps) => {
                 <ExperienceHeader>Personal Side Projects</ExperienceHeader>
                 <ExperienceList>
                     <ExperienceListItem>
-                        This site (Built with Next.js + Vercel, Styled-Components, and Typescript)
+                        <a href={'https://github.com/aslettz/showcase'}>This site</a> (Built with Next.js + Vercel, Styled-Components, and Typescript)
                     </ExperienceListItem>
                     <ExperienceListItem>
                         Smart Contract Hacking Challenges (In progress)
+                        <ExperienceList>
+                            <ExperienceListItem>
+                                <a href={'https://github.com/aslettz/dv-defi'}>
+                                    Damn Vulnerable Defi
+                                </a>
+                            </ExperienceListItem>
+                            <ExperienceListItem>
+                                <a href={'https://capturetheether.com/'}>
+                                    Capture the ether (Coming soon)
+                                </a>
+                            </ExperienceListItem>
+                            <ExperienceListItem>
+                                <a href={'https://ethernaut.openzeppelin.com/'}>
+                                    The Ethernaut (Coming soon)
+                                </a>
+                            </ExperienceListItem>
+                        </ExperienceList>
                     </ExperienceListItem>
                     <ExperienceListItem>
-                        Personal NFT Collection (Coming Soon!)
+                        Personal NFT Collection (Connect your wallet above!)
                     </ExperienceListItem>
                 </ExperienceList>
             </ExperienceContainer>)
